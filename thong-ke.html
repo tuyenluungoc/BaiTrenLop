@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống kê</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+/* Thống kê nhanh */
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.stat-box {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    width: 23%;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-box h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.stat-box p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Biểu đồ */
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chart {
+    width: 48%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chart h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+canvas {
+    width: 100%;
+    height: 300px;
+}
+
+</style>
+<body>
+    <div class="dashboard-container">
+        <h1>Dashboard - Flycam Store</h1>
+        
+        <!-- Thống kê nhanh -->
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3>Total Revenue</h3>
+                <p>$12,500</p>
+            </div>
+            <div class="stat-box">
+                <h3>Total Invoices</h3>
+                <p>150</p>
+            </div>
+            <div class="stat-box">
+                <h3>Top Selling Product</h3>
+                <p>DJI Air 2S</p>
+            </div>
+            <div class="stat-box">
+                <h3>Completed Orders</h3>
+                <p>100</p>
+            </div>
+        </div>
+
+        <!-- Biểu đồ doanh thu và trạng thái đơn hàng -->
+        <div class="chart-container">
+            <div class="chart" id="revenueChart">
+                <h2>Revenue Over Time</h2>
+                <canvas id="revenueCanvas"></canvas>
+            </div>
+            <div class="chart" id="orderStatusChart">
+                <h2>Order Status Breakdown</h2>
+                <canvas id="orderStatusCanvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
+<script>
+    // Dữ liệu mẫu cho doanh thu và trạng thái đơn hàng
+const revenueData = [500, 1000, 1250, 2000, 1500, 2500, 3500];
+const orderStatusData = {
+    completed: 100,
+    pending: 30,
+    canceled: 20
+};
+
+// Biểu đồ doanh thu theo thời gian
+const revenueCanvas = document.getElementById('revenueCanvas').getContext('2d');
+const revenueChart = new Chart(revenueCanvas, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [{
+            label: 'Revenue ($)',
+            data: revenueData,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: true,
+            },
+        },
+    }
+});
+
+// Biểu đồ trạng thái đơn hàng
+const orderStatusCanvas = document.getElementById('orderStatusCanvas').getContext('2d');
+const orderStatusChart = new Chart(orderStatusCanvas, {
+    type: 'pie',
+    data: {
+        labels: ['Completed', 'Pending', 'Canceled'],
+        datasets: [{
+            label: 'Order Status',
+            data: [orderStatusData.completed, orderStatusData.pending, orderStatusData.canceled],
+            backgroundColor: [
+                'rgba(75, 192, 192, 1)',
+                'rgba(255, 205, 86, 1)',
+                'rgba(255, 99, 132, 1)'
+            ],
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: true,
+            },
+        },
+    }
+});
+
+</script>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý khách hàng</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Bảng khách hàng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Nút chỉnh sửa và xóa */
+.edit-btn, .delete-btn {
+    padding: 6px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.edit-btn {
+    background-color: #ffa500;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #e69500;
+}
+
+.delete-btn:hover {
+    background-color: #e60000;
+}
+
+/* Form thêm mới khách hàng */
+form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+form input {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1>Quản lý khách hàng</h1>
+        
+        <!-- Bảng danh sách khách hàng -->
+        <table id="customerTable">
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dữ liệu mẫu -->
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>john@example.com</td>
+                    <td>0912345678</td>
+                    <td>
+                        <button class="edit-btn">Edit</button>
+                        <!-- <button class="delete-btn">Delete</button> -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane Smith</td>
+                    <td>jane@example.com</td>
+                    <td>0933333333</td>
+                    <td>
+                        <button class="edit-btn">Edit</button>
+                        <!-- <button class="delete-btn">Delete</button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Form thêm mới khách hàng -->
+        <h2>Add New Customer</h2>
+        <form id="customerForm">
+            <input type="text" id="customerName" placeholder="Customer Name" required>
+            <input type="email" id="customerEmail" placeholder="Email" required>
+            <input type="tel" id="customerPhone" placeholder="Phone Number" required>
+            <button type="submit">Add Customer</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Tin Tức </title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-gap: 20px;
+        }
+        .main-news {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .main-news img {
+            width: 100%;
+            transition: transform 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+        .main-news:hover img {
+            transform: scale(1.03);
+        }
+        .main-news h2 {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 22px;
+            text-align: left;
+            width: calc(100% - 40px);
+        }
+        .sidebar-news {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .sidebar-news article {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .sidebar-news article img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+        .sidebar-news article:hover img {
+            transform: scale(1.03);
+        }
+        .sidebar-news h3 {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .card-container {
+    display: flex;
+    justify-content: space-between; /* Căn đều các thẻ */
+    gap: 20px; /* Khoảng cách giữa các thẻ */
+}
+
+.card {
+    width: 30%; /* Chiều rộng của mỗi thẻ */
+    border: 1px solid #ddd; /* Viền cho thẻ */
+    border-radius: 10px; /* Bo tròn góc */
+    overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển động */
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Hiệu ứng di chuyển lên khi hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tăng đổ bóng khi hover */
+}
+
+.card-image {
+    width: 100%; /* Ảnh chiếm toàn bộ chiều rộng của thẻ */
+    height: auto; /* Giữ tỷ lệ của ảnh */
+    border-bottom: 1px solid #ddd; /* Đường viền dưới cho ảnh */
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.card-text {
+    padding: 0 10px 10px;
+    color: #555;
+}
+
+    
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="main-grid">
+        <!-- Phần bài viết chính -->
+        <div class="main-news">
+            <img src="img/action-5-pro-vs-action-4.jpg" alt="Main News">
+            <h2>So Sánh DJI Action 5 Pro Vs DJI Action 4</h2>
+        </div>
+
+        <!-- Phần bài viết bên cạnh -->
+        <div class="sidebar-news">
+            <article>
+                <img src="img/Review-DJI-Mini-4K-2.jpg" alt="News 1">
+                <h3>Đánh Giá DJI Mini 4K</h3>
+            </article>
+            <article>
+                <img src="img/che-do-quickshot-tren-drone-dji.jpg" alt="News 2">
+                <h3>Giới Thiệu Chế Độ Quickshot</h3>
+            </article>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="card">
+            <img src="img/5-meo-su-dung-Gimbal-tren-dien-thoai-di-dong-cho-nguoi-moi-bat-dau.png" alt="5 mẹo sử dụng Gimbal" class="card-image">
+            <h2 class="card-title">5 mẹo sử dụng Gimbal trên điện thoại di động</h2>
+            <p class="card-text">Nếu bạn chỉ có một chiếc điện thoại và muốn quay video hành trình du lịch của mình...</p>
+        </div>
+        <div class="card">
+            <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+            <h2 class="card-title">Mở hộp DJI OM5 – Những cải tiến của DJI OM 5 vs DJI OM 4</h2>
+            <p class="card-text">Gimbal DJI OM 5 hiện nay là chủ đề quan tâm nhất của những người yêu thích công nghệ...</p>
+        </div>
+        <div class="card">
+            <img src="img/Osmo-Action-9.png" alt="Osmo Action" class="card-image">
+            <h2 class="card-title">Bản cập nhật Firmware của Osmo Action có điểm gì mới?</h2>
+            <p class="card-text">Osmo Action là camera hành động được DJI ra mắt vào năm 2019 với nhiều điểm nổi trội...</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
