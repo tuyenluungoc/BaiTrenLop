@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{/layout/layout :: layout(~{::title}, ~{}, ~{::content}, ~{})}">
+
+<head>
+    <title>Tất cả phim</title>
+</head>
+
+<body>
+    <div class="product-category">
+        <div class="container">
+            <ul class="product-list">
+                <li><img src="img/anh1.jpg" style="height:50px" alt="DJI Mavic"><p>DJI MAVIC</p></li>
+                <li><img src="img/anh2.jpg" style="height:50px" alt="DJI Air"><p>DJI AIR</p></li>
+                <li><img src="img/anh3.jpg" style="height:50px" alt="DJI Mini"><p>DJI MINI</p></li>
+                <li><img src="img/anh4.jpg" style="height:50px" alt="DJI FPV"><p>DJI FPV</p></li>
+                <li><img src="img/anh5.jpg" style="height:50px" alt="Osmo Pocket"><p>OSMO POCKET</p></li>
+                <li><img src="img/anh6.jpg" style="height:50px" alt="Osmo Action"><p>OSMO ACTION</p></li>
+                <li><img src="img/anh7.jpg" style="height:50px" alt="Osmo Mobile"><p>OSMO MOBILE</p></li>
+                <li><img src="img/anh8.jpg" style="height:50px" alt="DJI Ronin"><p>DJI RONIN</p></li>
+                <li><img src="img/anh9.jpg" style="height:50px" alt="DJI Power"><p>DJI POWER</p></li>
+                <li><img src="img/anh10.jpg" style="height:50px" alt="Other Products"><p>SẢN PHẨM KHÁC</p></li>
+            </ul>
+        </div>
+    </div>
+        <!-- Main Product Section -->
+        <div class="main-product">
+            <div class="container">
+              <div class="gt-container">
+                <div class="slideshow-container">
+                  <div class="slides fade">
+                    <img src="https://www.winwinstore.vn/wp-content/uploads/2021/04/Drone-DJI-Air-2S-5.jpeg" alt="Slide 1" class="image">
+                  </div>
+                  <div class="slides fade">
+                    <img src="https://tokyocamera.vn/wp-content/uploads/2021/11/DJI-Mavic-3-Cine-DroneDJ-Featured-Image.jpeg" alt="Slide 2" class="image">
+                  </div>
+                  <div class="slides fade">
+                    <img src="https://tokyocamera.vn/wp-content/uploads/2023/07/Ra-mat-DJI-Air-3-1-1200x675.jpg" alt="Slide 3" class="image">
+                  </div>
+          
+                  <!-- Navigation dots -->
+                  <div class="dots-container">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                  </div>
+                </div>
+          
+              </div>
+              <br>
+              <div class="card-container">
+                <div class="card">
+                  <img src="img/5-meo-su-dung-Gimbal-tren-dien-thoai-di-dong-cho-nguoi-moi-bat-dau.png" alt="5 mẹo sử dụng Gimbal" class="card-image">
+                  <h2 class="card-title">5 mẹo sử dụng Gimbal trên điện thoại di động</h2>
+                  <p class="card-text">Nếu bạn chỉ có một chiếc điện thoại di dộng và muốn quay video hành trình du lịch của mình...</p>
+                </div>
+                <div class="card">
+                  <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+                  <h2 class="card-title">Mở hộp DJI OM5 – Những cải tiến của DJI OM 5 vs DJI OM 4</h2>
+                  <p class="card-text">Gimbal DJI OM 5 hiện nay là chủ đề quan tâm nhất của những người yêu thích công nghệ...</p>
+                </div>
+                <div class="card">
+                  <img src="img/Osmo-Action-9.png" alt="Osmo Action" class="card-image">
+                  <h2 class="card-title">Bản cập nhật Firmware của Osmo Action có điểm gì mới?</h2>
+                  <p class="card-text">Osmo Action là camera hành động được DJI ra mắt vào năm 2019 với nhiều điểm nổi trội...</p>
+                </div>
+                <div class="card">
+                    <img src="img/Osmo-Action-9.png" alt="Osmo Action" class="card-image">
+                    <h2 class="card-title">Bản cập nhật Firmware của Osmo Action có điểm gì mới?</h2>
+                    <p class="card-text">Osmo Action là camera hành động được DJI ra mắt vào năm 2019 với nhiều điểm nổi trội...</p>
+                  </div>
+              </div>
+            </div>
+          
+          
+           
+            <!-- Section Giới Thiệu -->
+            <section class="about-section">
+              <div class="section-container">
+                <div class="image-container">
+                  <img src="img/section.jpg" alt="DJI Image">
+                </div>
+                <div class="text-container">
+                  <h2>GIỚI THIỆU</h2>
+                  <p>
+                    DJI by VJO Việt Nam tự hào trở thành DJI Store đầu tiên tại Việt Nam đem đến cho khách hàng
+                    một không gian trải nghiệm sản phẩm vô cùng độc đáo và thú vị. Là đại lý phân phối chính thức
+                    của DJI, khi đến với cửa hàng của chúng tôi, khách hàng sẽ được thỏa sức trải nghiệm các sản phẩm
+                    flycam, gimbal, action camera chính hãng, chất lượng cao cũng như các thiết bị nhỏ gọn đẳng cấp khác
+                    đến từ thương hiệu nổi tiếng này.
+                  </p>
+                  <p>
+                    Ngoài ra, tại đây, chúng tôi còn cung cấp dịch vụ chăm sóc tận tình, chu đáo, cùng nhiều chế độ bảo
+                    hành uy tín nhằm mang đến sự hài lòng nhất cho khách hàng.
+                  </p>
+                </div>
+              </div>
+            </section>
+            
+            <div class="card-container">
+          
+              <div class="card">
+                <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+                <h2 class="card-title">
+                  DJI FPV Remote Controller 3</h2>
+                <p class="card-text">
+                  590.000₫ </p>
+              </div>
+              <div class="card">
+                <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+                <h2 class="card-title">
+                  DJI Avata 2 ND Filters Set (ND8/16/32)</h2>
+                <p class="card-text">
+                  1.409.000₫ </p>
+              </div>
+              <div class="card">
+                <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+                <h2 class="card-title">
+                  DJI Avata 2 Two-Way Charging Hub</h2>
+                <p class="card-text">
+                  1.059.000₫ </p>
+              </div>
+              <div class="card">
+                <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+                <h2 class="card-title">
+                  DJI Avata 2 Intelligent Flight Battery</h2>
+                <p class="card-text">
+                  2.479.000₫ </p>
+              </div>
+              
+          
+            </div>
+            <br>
+            <div class="ud-container">
+              <h1 class="ud-h1">Ứng dụng sản phẩm của DJI trong nhiều lĩnh vực</h1>
+              <div class="ud-card-container">
+                <div class="ud-card">
+                  <img src="img/ud1.jpg" alt="Video Production">
+          
+                </div>
+                <div class="ud-card">
+                  <img src="img/ud2.jpg" alt="Business">
+          
+                </div>
+                <div class="ud-card">
+                  <img src="img/ud3.jpg" alt="Agriculture">
+          
+                </div>
+              </div>
+            </div>
+          
+          </div>
+    
+    
+</body>
+</html>
