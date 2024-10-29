@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ Flycam</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+  /* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f0f4f8;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #ffffff;
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+    color: #00796b;
+}
+
+.menu li a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #00796b;
+    transition: all 0.3s ease;
+}
+
+.menu li a:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+.search-cart {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-cart input {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-cart input:focus {
+    border-color: #00796b;
+}
+
+.search-cart i {
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.search-cart i:hover {
+    color: #00796b;
+}
+
+/* Product Category Section */
+.product-category {
+    background-color: #ffffff;
+    padding: 25px 0;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+}
+
+.product-list {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-list li {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product-list li:hover {
+    transform: translateY(-10px);
+}
+
+.product-list img {
+    max-width: 70px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-list img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-list p {
+    font-size: 14px;
+    color: #00796b;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+/* Main Product Section */
+.main-product {
+    text-align: center;
+    padding: 60px 0;
+    background: linear-gradient(135deg, #e0f7fa 30%, #ffffff 100%);
+    border-radius: 8px;
+    margin-top: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main-product h1 {
+    font-size: 48px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.main-product p {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.main-product img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.main-product img:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer (Optional) */
+.footer {
+    background-color: #00796b;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer p {
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+.slides {
+            display: none;
+            width: 100%;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 500px;
+            /* Cố định chiều cao của slideshow */
+        }
+
+
+        .slides img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .fade {
+            animation: fadeEffect 1s ease-in-out;
+        }
+
+        @keyframes fadeEffect {
+            from {
+                opacity: 0.5;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Navigation dots */
+        .dots-container {
+            text-align: center;
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
+
+        .slides:hover img {
+            transform: scale(1.05);
+            /* Phóng to 5% khi hover */
+            filter: brightness(1.1);
+            /* Tăng độ sáng ảnh khi hover */
+        }
+        .card-container {
+    display: flex;
+    justify-content: space-between; /* Căn đều các thẻ */
+    gap: 20px; /* Khoảng cách giữa các thẻ */
+}
+
+.card {
+    width: 30%; /* Chiều rộng của mỗi thẻ */
+    border: 1px solid #ddd; /* Viền cho thẻ */
+    border-radius: 10px; /* Bo tròn góc */
+    overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển động */
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Hiệu ứng di chuyển lên khi hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tăng đổ bóng khi hover */
+}
+
+.card-image {
+    width: 100%; /* Ảnh chiếm toàn bộ chiều rộng của thẻ */
+    height: auto; /* Giữ tỷ lệ của ảnh */
+    border-bottom: 1px solid #ddd; /* Đường viền dưới cho ảnh */
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.card-text {
+    padding: 0 10px 10px;
+    color: #555;
+}
+.navbar {
+    background-color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.logo img {
+    height: 50px;
+}
+
+.features {
+    background-color: #00796b;
+    padding: 40px 40px;
+    color: #fff;
+}
+
+.features .container {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.feature {
+    max-width: 200px;
+}
+
+.feature i {
+    font-size: 40px;
+    /* margin-bottom: 10px; */
+}
+
+.feature p {
+    font-size: 18px;
+}
+
+/* Footer */
+/* Footer */
+.footer {
+    background-color: #1c1c1c; /* Đổi màu nền footer thành đen tối */
+    color: #fff;
+    padding: 40px 0;
+    margin-top: 0px;
+    font-family: 'Arial', sans-serif;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    padding: 0 15px;
+}
+
+.footer-section h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+    color: #d1d1d1;
+    font-size: 14px;
+}
+
+.footer-section ul li:hover {
+    color: #fff;
+}
+
+.footer-section ul li a {
+    color: #d1d1d1;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+}
+
+.footer-section form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+.footer-section form button {
+    padding: 10px;
+    width: 100%;
+    background-color: #00796b; /* Nút màu xanh đặc trưng */
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.footer-section form button:hover {
+    background-color: #005a4c;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons i {
+    font-size: 20px;
+    margin-right: 15px;
+    color: #d1d1d1;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.social-icons i:hover {
+    color: #fff;
+}
+
+/* Icons and Text Rows */
+.footer-icons {
+    display: flex;
+    justify-content: space-between;
+    background-color: #111; /* Thanh đen phía trên footer */
+    padding: 20px;
+    color: white;
+    font-size: 14px;
+}
+
+.footer-icons .icon-box {
+    text-align: center;
+    flex: 1;
+    padding: 10px;
+}
+
+.footer-icons .icon-box i {
+    font-size: 30px;
+    color: #00796b;
+    margin-bottom: 10px;
+}
+
+.footer-icons .icon-box p {
+    margin-top: 10px;
+}
+
+/* Small adjustments for responsiveness */
+@media (max-width: 768px) {
+    .footer .container {
+        flex-direction: column;
+    }
+
+    .footer-icons {
+        flex-direction: column;
+  
+    }}
+
+
+    .section-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    background-color: bisque;
+    max-width: 1200px;
+    margin: 50px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    
+}
+
+/* Phần hình ảnh */
+.image-container {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Phần văn bản */
+.text-container {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.text-container h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #00796b;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.text-container p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Hiệu ứng responsive */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .image-container, .text-container {
+        padding: 0;
+    }
+
+    .image-container {
+        margin-bottom: 20px;
+    }
+}
+
+.ud-container {
+    text-align: center;
+}
+
+
+
+.ud-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ud-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    width: 300px;
+   
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.ud-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.ud-card h2 {
+    font-size: 20px;
+    color: #007bff;
+    margin-top: 15px;
+}
+
+
+.ud-card:hover {
+    transform: scale(1.05);
+}
+
+.sp-card {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f8ff;
+        padding: 15px;
+        border-radius: 8px;
+        width: 200px;
+        margin: 10px auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-image {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .sp-card-title {
+        font-size: 18px;
+        color: blue;
+        margin: 10px 0;
+    }
+
+    .sp-card-text {
+        font-size: 24px;
+        /*color: #333;*/
+        /* display: flex; */
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .old-price {
+        text-decoration: line-through !important;
+        color: gray !important;
+        font-size: 20px;
+    }
+
+    .new-price {
+        font-weight: bold !important;
+        color: red !important;
+    }
+
+    .discount-icon {
+        font-size: 24px !important;
+        /*color: red !important;*/
+    }
+
+.sp-container {
+    display: flex;
+    justify-content: space-between; /* Căn đều các thẻ */
+    margin-left:15px ;
+    margin-right:15px ;
+    gap: 5px; /* Khoảng cách giữa các thẻ */
+}
+
+</style>
+<body>
+    <!-- Navigation Bar -->
+     <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="/trang-chu.html"><img src="img/Logo1.jpg" alt="DJI Logo"></a>
+            </div>
+            <ul class="menu">
+                <li><a href="/lien-he.html">Giới Thiệu</a></li>
+                <li><a href="/san-pham.html">Sản Phẩm</a></li>
+                <li><a href="/huong-dan-mua-hang.html">Hướng Dẫn Mua Hàng</a></li>
+                <li><a href="/bao-hanh.html">Dịch Vụ Bảo Hành</a></li>
+                <li><a href="/tin-tuc.html">Tin Tức</a></li>
+                <li><a href="/lien-he.html">Liên Hệ</a></li>
+            </ul>
+            <div class="search-cart">
+                <input type="text" placeholder="Tìm kiếm">
+                <i class="fas fa-search"></i>
+                <a href="/gio-hang.html"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Category Section -->
+   
+</header>
+
+<div class="product-category">
+    <div class="container">
+        <ul class="product-list">
+            <li><img src="img/anh1.jpg" alt="DJI Mavic"><p>DJI MAVIC</p></li>
+            <li><img src="img/anh2.jpg" alt="DJI Air"><p>DJI AIR</p></li>
+            <li><img src="img/anh3.jpg" alt="DJI Mini"><p>DJI MINI</p></li>
+            <li><img src="img/anh4.jpg" alt="DJI FPV"><p>DJI FPV</p></li>
+            <li><img src="img/anh5.jpg" alt="Osmo Pocket"><p>OSMO POCKET</p></li>
+            <li><img src="img/anh6.jpg" alt="Osmo Action"><p>OSMO ACTION</p></li>
+            <li><img src="img/anh7.jpg" alt="Osmo Mobile"><p>OSMO MOBILE</p></li>
+            <li><img src="img/anh8.jpg" alt="DJI Ronin"><p>DJI RONIN</p></li>
+            <li><img src="img/anh9.jpg" alt="DJI Power"><p>DJI POWER</p></li>
+            <li><img src="img/anh10.jpg" alt="Other Products"><p>SẢN PHẨM KHÁC</p></li>
+        </ul>
+    </div>
+</div>
+    <!-- Main Product Section -->
+    <div class="main-product">
+        <div class="container">
+          <div class="gt-container">
+            <div class="slideshow-container">
+              <div class="slides fade">
+                <img src="https://www.winwinstore.vn/wp-content/uploads/2021/04/Drone-DJI-Air-2S-5.jpeg" alt="Slide 1" class="image">
+              </div>
+              <div class="slides fade">
+                <img src="https://tokyocamera.vn/wp-content/uploads/2021/11/DJI-Mavic-3-Cine-DroneDJ-Featured-Image.jpeg" alt="Slide 2" class="image">
+              </div>
+              <div class="slides fade">
+                <img src="https://tokyocamera.vn/wp-content/uploads/2023/07/Ra-mat-DJI-Air-3-1-1200x675.jpg" alt="Slide 3" class="image">
+              </div>
+      
+              <!-- Navigation dots -->
+              <div class="dots-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+              </div>
+            </div>
+      
+          </div>
+          <br>
+          <div class="card-container">
+            <div class="card">
+              <img src="img/5-meo-su-dung-Gimbal-tren-dien-thoai-di-dong-cho-nguoi-moi-bat-dau.png" alt="5 mẹo sử dụng Gimbal" class="card-image">
+              <h2 class="card-title">5 mẹo sử dụng Gimbal trên điện thoại di động</h2>
+              <p class="card-text">Nếu bạn chỉ có một chiếc điện thoại và muốn quay video hành trình du lịch của mình...</p>
+            </div>
+            <div class="card">
+              <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+              <h2 class="card-title">Mở hộp DJI OM5 – Những cải tiến của DJI OM 5 vs DJI OM 4</h2>
+              <p class="card-text">Gimbal DJI OM 5 hiện nay là chủ đề quan tâm nhất của những người yêu thích công nghệ...</p>
+            </div>
+            <div class="card">
+              <img src="img/Osmo-Action-9.png" alt="Osmo Action" class="card-image">
+              <h2 class="card-title">Bản cập nhật Firmware của Osmo Action có điểm gì mới?</h2>
+              <p class="card-text">Osmo Action là camera hành động được DJI ra mắt vào năm 2019 với nhiều điểm nổi trội...</p>
+            </div>
+          </div>
+        </div>
+        <br>
+      
+        <div class="sp-container">
+      
+      
+      
+          <div class="sp-card">
+            <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+            <h2 class="sp-card-title">DJI FPV Remote Controller 3</h2>
+            <p class="sp-card-text">
+              <span class="old-price">590.000₫</span>
+              <br>
+              <span class="new-price">409.000₫</span>
+              <span class="discount-sicon">🤑</span>
+              <div class="detail">
+                <button class="buy">Thêm Giỏ Hàng</button>
+              <button class="xem">Xem </button>
+              </div>
+            </p>
+          </div>
+          <div class="sp-card">
+            <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+            <h2 class="sp-card-title">DJI Avata 2 ND Filters Set (ND8/16/32)</h2>
+            <p class="sp-card-text">
+              <span class="old-price">1.509.000₫</span>
+              <br>
+              <span class="new-price">1.409.000₫</span>
+              <span class="discount-icon">🤑</span>
+            </p>
+          </div>
+          <div class="sp-card">
+            <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+            <h2 class="sp-card-title">DJI Avata 2 Two-Way Charging Hub</h2>
+            <p class="sp-card-text">
+              <span class="old-price">1.159.000₫</span>
+              <br>
+              <span class="new-price">1.059.000₫</span>
+              <span class="discount-icon">🤑</span>
+            </p>
+          </div>
+          <div class="sp-card">
+            <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+            <h2 class="sp-card-title">DJI Avata 2 Intelligent Flight Battery</h2>
+            <p class="sp-card-text">
+              <span class="old-price">2.579.000₫</span>
+              <br>
+              <span class="new-price">2.479.000₫</span>
+              <span class="discount-icon">🤑</span>
+            </p>
+          </div>
+          <div class="sp-card">
+            <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+            <h2 class="sp-card-title">DJI Avata</h2>
+            <p class="sp-card-text">
+              <span class="old-price">12.990.000₫</span>
+              <br>
+              <span class="new-price">11.990.000₫</span>
+              <span class="discount-icon">🤑</span>
+            </p>
+          </div>
+      
+      
+        </div>
+        <!-- Section Giới Thiệu -->
+        <section class="about-section">
+          <div class="section-container">
+            <div class="image-container">
+              <img src="img/section.jpg" alt="DJI Image">
+            </div>
+            <div class="text-container">
+              <h2>GIỚI THIỆU</h2>
+              <p>
+                DJI by VJO Việt Nam tự hào trở thành DJI Store đầu tiên tại Việt Nam đem đến cho khách hàng
+                một không gian trải nghiệm sản phẩm vô cùng độc đáo và thú vị. Là đại lý phân phối chính thức
+                của DJI, khi đến với cửa hàng của chúng tôi, khách hàng sẽ được thỏa sức trải nghiệm các sản phẩm
+                flycam, gimbal, action camera chính hãng, chất lượng cao cũng như các thiết bị nhỏ gọn đẳng cấp khác
+                đến từ thương hiệu nổi tiếng này.
+              </p>
+              <p>
+                Ngoài ra, tại đây, chúng tôi còn cung cấp dịch vụ chăm sóc tận tình, chu đáo, cùng nhiều chế độ bảo
+                hành uy tín nhằm mang đến sự hài lòng nhất cho khách hàng.
+              </p>
+            </div>
+          </div>
+        </section>
+        <br>
+        <div class="sp-container">
+      
+          <div class="sp-card">
+            <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+            <h2 class="sp-card-title">
+              DJI FPV Remote Controller 3</h2>
+            <p class="sp-card-text">
+              590.000₫ </p>
+          </div>
+          <div class="sp-card">
+            <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+            <h2 class="sp-card-title">
+              DJI Avata 2 ND Filters Set (ND8/16/32)</h2>
+            <p class="sp-card-text">
+              1.409.000₫ </p>
+          </div>
+          <div class="sp-card">
+            <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+            <h2 class="sp-card-title">
+              DJI Avata 2 Two-Way Charging Hub</h2>
+            <p class="sp-card-text">
+              1.059.000₫ </p>
+          </div>
+          <div class="sp-card">
+            <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+            <h2 class="sp-card-title">
+              DJI Avata 2 Intelligent Flight Battery</h2>
+            <p class="sp-card-text">
+              2.479.000₫ </p>
+          </div>
+          <div class="sp-card">
+            <img src="img/mo-hop-dji-om-5-ava.jpg" alt="DJI OM5" class="card-image">
+            <h2 class="sp-card-title">
+              DJI Avata</h2>
+            <p class="sp-card-text">
+              11.990.000₫</p>
+          </div>
+      
+        </div>
+        <br>
+        <div class="ud-container">
+          <h1 class="ud-h1">Ứng dụng sản phẩm của DJI trong nhiều lĩnh vực</h1>
+          <div class="ud-card-container">
+            <div class="ud-card">
+              <img src="img/ud1.jpg" alt="Video Production">
+      
+            </div>
+            <div class="ud-card">
+              <img src="img/ud2.jpg" alt="Business">
+      
+            </div>
+            <div class="ud-card">
+              <img src="img/ud3.jpg" alt="Agriculture">
+      
+            </div>
+          </div>
+        </div>
+      
+      </div>
+
+
+    <!-- Feature Section -->
+        
+   
+
+    <!-- Footer -->
+    <footer class="footer">
+        <section class="features">
+            <div class="container">
+                <div class="feature">
+                    <i class="fas fa-shipping-fast"></i>
+                    <p>Giao hàng toàn quốc</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-credit-card"></i>
+                    <p>Hỗ trợ trả góp nhanh chóng</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>Bảo hành chính hãng</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-store"></i>
+                    <p>DJI Store tại Việt Nam</p>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <br>
+        <br>
+        <div class="container">
+            <div class="footer-section">
+                <h3>DJI BY VJO VIETNAM</h3>
+                <p>Địa chỉ: Số 279 Đường Lĩnh Nam, Phường Vĩnh Hưng, Quận Hoàng Mai, TP Hà Nội, Việt Nam</p>
+                <p>Hotline: 0815.000.060</p>
+                <p>DKKD số 0108676636 do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp ngày 29/03/2019</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fas fa-phone"></i>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>SẢN PHẨM</h3>
+                <ul>
+                    <li>Flycam</li>
+                    <li>Gimbal</li>
+                    <li>FPV</li>
+                    <li>Phụ kiện flycam</li>
+                    <li>Phụ kiện gimbal</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>HỆ THỐNG PHÂN PHỐI SẢN PHẨM</h3>
+                <ul>
+                    <li>DJI Store Hà Nội</li>
+                    <li>TP. Hồ Chí Minh</li>
+                    <li>Đà Nẵng</li>
+                    <li>Quảng Ninh</li>
+                    <li>Nghệ An</li>
+                    <li>Thanh Hóa</li>
+                    <li>Đắk Lắk</li>
+                    <li>Khánh Hòa</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>ĐĂNG KÍ</h3>
+                <p>Đăng kí để nhận các thông báo về khuyến mãi và các thông tin hữu ích về sản phẩm.</p>
+                <form>
+                    <input type="text" placeholder="Tên">
+                    <input type="email" placeholder="Email">
+                    <input type="text" placeholder="Số điện thoại">
+                    <button type="submit">ĐĂNG KÍ</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</body>
+</html>
+<script>
+    let slideIndex = 0;
+    showSlides();
+    
+    function showSlides() {
+        let slides = document.getElementsByClassName("slides");
+        let dots = document.getElementsByClassName("dot");
+    
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+    
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+    
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+    
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+    
+        setTimeout(showSlides, 3000); // Change slide every 3 seconds
+    }
+    
+    function currentSlide(n) {
+        slideIndex = n;
+        showSlides();
+    }
+    </script>
