@@ -1,0 +1,732 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+/* Header styles */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+}
+
+.menu li {
+    margin: 0 15px;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #ff6b6b;
+}
+
+.search-cart {
+    display: flex;
+    align-items: center;
+}
+
+.search-cart input {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-cart i {
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Product category styles */
+.product-category {
+    background-color: #fff;
+    padding: 20px 0;
+}
+
+.product-list {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap; /* Cho phép các thẻ sản phẩm xuống dòng nếu không vừa */
+    justify-content: center; /* Căn giữa các thẻ sản phẩm */
+    margin: 0; /* Bỏ margin mặc định */
+    padding: 0; /* Bỏ padding mặc định */
+}
+
+.product-list li {
+    margin: 1px; /* Khoảng cách giữa các thẻ sản phẩm */
+    text-align: center; /* Căn giữa văn bản trong thẻ */
+}
+
+
+.product-list img {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+}
+@media (max-width: 768px) {
+    .product-list li {
+        flex: 1 0 10%; /* Mỗi thẻ sẽ chiếm 30% chiều rộng */
+        max-width: 100px; /* Đặt chiều rộng tối đa cho thẻ sản phẩm */
+    }
+    .product-list img {
+        max-width: 100%; /* Đảm bảo hình ảnh không vượt quá chiều rộng của thẻ */
+        height: auto; /* Chiều cao tự động */
+    }
+    
+}
+
+/* Main product section */
+.main-product {
+    padding: 20px 0;
+}
+
+.gt-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+}
+
+.slides {
+    display: none;
+}
+
+.image {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.dots-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s;
+    cursor: pointer;
+}
+
+.dot:hover {
+    background-color: #717171;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 250px; /* Thay đổi width cho card nhỏ hơn */
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.card-title {
+    font-size: 1.1em; /* Giảm kích thước chữ tiêu đề */
+    margin: 10px 0;
+}
+
+.card-text {
+    font-size: 0.9em; /* Giảm kích thước chữ cho văn bản */
+}
+
+/* About section */
+.about {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .menu {
+        font-size: 14px; /* Giảm kích thước chữ cho menu */
+    }
+
+    .menu li {
+        margin: 0 10px; /* Giảm khoảng cách giữa các mục menu */
+    }
+
+    .card {
+        width: 90%; /* Đặt chiều rộng cho thẻ sản phẩm để vừa với màn hình */
+        max-width: 250px; /* Giới hạn chiều rộng tối đa */
+        padding: 15px; /* Giảm padding cho thẻ */
+        width: calc(50% - 10px); /* Chiều rộng 2 thẻ trên màn hình điện thoại */
+    }
+
+    .card-title {
+        font-size: 1em; /* Giảm kích thước chữ tiêu đề cho thẻ */
+    }
+
+    .card-text {
+        font-size: 0.8em; /* Giảm kích thước chữ cho văn bản thẻ */
+    }
+
+    .search-cart input {
+        font-size: 12px; /* Giảm kích thước chữ trong ô tìm kiếm */
+    }
+
+    .search-cart i {
+        font-size: 14px; /* Giảm kích thước chữ cho icon */
+    }
+
+    .product-list {
+        flex-direction: row; /* Giữ thẻ sản phẩm nằm ngang */
+        justify-content: center; /* Căn giữa các thẻ */
+    }
+    .product-list img {
+        
+        height: auto; /* Chiều cao tự động */
+    }
+    .card-image {
+        max-width: 100%; /* Đảm bảo hình ảnh không vượt quá chiều rộng của thẻ */
+        height: auto; /* Chiều cao tự động */
+    
+    }
+}
+
+@media (max-width: 480px) {
+    .menu {
+        font-size: 12px; /* Giảm kích thước chữ cho menu trên màn hình nhỏ */
+    }
+
+    .card {
+        width: 95%; /* Đặt chiều rộng cho thẻ sản phẩm để vừa với màn hình */
+        max-width: 220px; /* Giới hạn chiều rộng tối đa cho thẻ sản phẩm nhỏ */
+        padding: 10px; /* Giảm padding cho thẻ */
+    }
+
+    .card-title {
+        font-size: 0.9em; /* Giảm kích thước chữ tiêu đề cho thẻ */
+    }
+
+    .card-text {
+        font-size: 0.7em; /* Giảm kích thước chữ cho văn bản thẻ */
+    }
+}
+
+
+
+.card {
+    width: 30%; /* Chiều rộng của mỗi thẻ */
+    border: 1px solid #ddd; /* Viền cho thẻ */
+    border-radius: 10px; /* Bo tròn góc */
+    overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển động */
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Hiệu ứng di chuyển lên khi hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tăng đổ bóng khi hover */
+}
+
+.card-image {
+    width: 100%; /* Ảnh chiếm toàn bộ chiều rộng của thẻ */
+    height: auto; /* Giữ tỷ lệ của ảnh */
+    border-bottom: 1px solid #ddd; /* Đường viền dưới cho ảnh */
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.card-text {
+    padding: 0 10px 10px;
+    color: #555;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.features {
+    background-color: #00796b;
+    padding: 40px 40px;
+    color: #fff;
+}
+
+.features .container {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.feature {
+    max-width: 200px;
+}
+
+.feature i {
+    font-size: 40px;
+    /* margin-bottom: 10px; */
+}
+
+.feature p {
+    font-size: 18px;
+}
+
+/* Footer */
+/* Footer */
+.footer {
+    background-color: #1c1c1c; /* Đổi màu nền footer thành đen tối */
+    color: #fff;
+    padding: 40px 0;
+    margin-top: 0px;
+    font-family: 'Arial', sans-serif;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    padding: 0 15px;
+}
+
+.footer-section h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+    color: #d1d1d1;
+    font-size: 14px;
+}
+
+.footer-section ul li:hover {
+    color: #fff;
+}
+
+.footer-section ul li a {
+    color: #d1d1d1;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+}
+
+.footer-section form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+.footer-section form button {
+    padding: 10px;
+    width: 100%;
+    background-color: #00796b; /* Nút màu xanh đặc trưng */
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.footer-section form button:hover {
+    background-color: #005a4c;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons i {
+    font-size: 20px;
+    margin-right: 15px;
+    color: #d1d1d1;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.social-icons i:hover {
+    color: #fff;
+}
+
+/* Icons and Text Rows */
+.footer-icons {
+    display: flex;
+    justify-content: space-between;
+    background-color: #111; /* Thanh đen phía trên footer */
+    padding: 20px;
+    color: white;
+    font-size: 14px;
+}
+
+.footer-icons .icon-box {
+    text-align: center;
+    flex: 1;
+    padding: 10px;
+}
+
+.footer-icons .icon-box i {
+    font-size: 30px;
+    color: #00796b;
+    margin-bottom: 10px;
+}
+
+.footer-icons .icon-box p {
+    margin-top: 10px;
+}
+
+/* Small adjustments for responsiveness */
+@media (max-width: 768px) {
+    .footer .container {
+        flex-direction: column;
+    }
+
+    .footer-icons {
+        flex-direction: column;
+  
+    }}
+
+
+    .section-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    background-color: bisque;
+    max-width: 1200px;
+    margin: 50px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    
+}
+
+/* Phần hình ảnh */
+.image-container {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Phần văn bản */
+.text-container {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.text-container h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #00796b;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.text-container p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Hiệu ứng responsive */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .image-container, .text-container {
+        padding: 0;
+    }
+
+    .image-container {
+        margin-bottom: 20px;
+    }
+}
+
+.ud-container {
+    text-align: center;
+}
+
+
+
+.ud-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ud-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    width: 300px;
+   
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.ud-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.ud-card h2 {
+    font-size: 20px;
+    color: #007bff;
+    margin-top: 15px;
+}
+
+
+.ud-card:hover {
+    transform: scale(1.05);
+}
+
+
+
+    .card-image {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .sp-card-title {
+        font-size: 18px;
+        color: blue;
+        margin: 10px 0;
+    }
+
+    .sp-card-text {
+        font-size: 24px;
+        /*color: #333;*/
+        /* display: flex; */
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .old-price {
+        text-decoration: line-through !important;
+        color: gray !important;
+        
+    }
+
+    .new-price {
+        font-weight: bold !important;
+        color: red !important;
+    }
+
+    .discount-icon {
+        font-size: 24px !important;
+        /*color: red !important;*/
+    }
+
+.sp-container {
+    display: flex;
+    justify-content: space-between; /* Căn đều các thẻ */
+    margin-left:15px ;
+    margin-right:15px ;
+    gap: 5px; /* Khoảng cách giữa các thẻ */
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các thẻ xuống dòng */
+    justify-content: space-between; /* Căn giữa các thẻ */
+    margin: 20px 0;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px; /* Giảm khoảng cách giữa các thẻ */
+    padding: 20px;
+    text-align: center;
+    width: calc(25% - 20px); /* 4 thẻ mỗi hàng trên màn hình máy tính */
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .card {
+        width: calc(45% - 20px); /* 2 thẻ mỗi hàng trên màn hình tablet */
+        display: -webkit-box; /* Thay đổi cách hiển thị thành box */
+       
+        -webkit-box-orient: vertical; /* Định hướng box thành dọc */
+        overflow: hidden; /* Ẩn phần văn bản vượt quá */
+        text-overflow: ellipsis; /* Hiển thị dấu "..." */
+    }
+
+    .product-list {
+        flex-direction: row; /* Giữ thẻ sản phẩm nằm ngang */
+        justify-content: space-between; /* Căn đều các thẻ sản phẩm */
+        flex-wrap: wrap; /* Cho phép các thẻ sản phẩm xuống dòng nếu không vừa */
+    }
+    .card-title {
+        font-size: 0.8em; /* Giảm kích thước chữ tiêu đề cho thẻ */
+    }
+
+    .card-text {
+        font-size: 0.6em; /* Giảm kích thước chữ cho văn bản thẻ */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: calc(45% - 10px); /* 1 thẻ mỗi hàng trên màn hình điện thoại nhỏ */
+    }
+    .card-title {
+        font-size: 0.8em; /* Giảm kích thước chữ tiêu đề cho thẻ */
+    }
+
+    .card-text {
+        font-size: 0.6em; /* Giảm kích thước chữ cho văn bản thẻ */
+    }
+}
+.about-section {
+    background-color: #f9f9f9; /* Màu nền cho phần giới thiệu */
+    padding: 20px; /* Khoảng cách bên trong */
+}
+
+.section-container {
+    display: flex; /* Sử dụng flexbox để sắp xếp hình ảnh và văn bản */
+    flex-direction: column; /* Đặt chiều dọc cho thiết bị di động */
+}
+
+.image-container img {
+    width: 100%; /* Hình ảnh chiếm toàn bộ chiều rộng */
+    height: auto; /* Chiều cao tự động */
+    border-radius: 10px; /* Bo tròn góc hình ảnh (tùy chọn) */
+}
+
+.text-container {
+    text-align: left; /* Căn lề bên trái cho văn bản */
+    margin-top: 10px; /* Khoảng cách giữa ảnh và văn bản */
+}
+
+/* Media query cho màn hình nhỏ hơn 768px */
+@media (max-width: 768px) {
+    .section-container {
+        flex-direction: column; /* Đặt lại chiều dọc khi trên thiết bị di động */
+        font-size: 0.6em; /* Giảm kích thước chữ cho văn bản thẻ */
+    }
+}
+
+
+
+/* Media query cho màn hình nhỏ hơn 768px */
+@media (max-width: 768px) {
+    .ud-h1 {
+        font-size: 18px; /* Kích thước chữ tiêu đề nhỏ hơn trên thiết bị di động */
+    }
+    .ud-card{
+        width: 20%;
+    }
+
+    .ud-card img {
+        width: 80px; /* Kích thước hình ảnh nhỏ hơn trên thiết bị di động */
+    }
+}
+@media (max-width: 768px) {
+    .feature {
+        flex: 1 1 20%; /* Mỗi tính năng sẽ chiếm 45% chiều rộng */
+        margin: 5px; /* Khoảng cách giữa các tính năng */
+    }
+
+    .feature i {
+        font-size: 20px; /* Giảm kích thước biểu tượng trên màn hình nhỏ */
+    }
+
+    .feature p {
+        font-size: 14px; /* Giảm kích thước chữ */
+    }
+}
+
