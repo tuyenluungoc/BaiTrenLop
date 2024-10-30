@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <style>
-    * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,32 +17,33 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
     color: #333;
-    padding: 20px;
+    padding: 2vw;
 }
 
 .container {
-    max-width: 1000px;
+    width: auto;;
     margin: 0 auto;
     background: #fff;
-    padding: 20px;
+    padding: 2vw;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+
 h1, h2 {
     margin-bottom: 20px;
     text-align: center;
+    font-size: 2vw;
 }
-
-/* Bảng khách hàng */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    font-size: 1vw;
 }
 
 table th, table td {
-    padding: 12px;
+    padding: 1vw;
     border: 1px solid #ddd;
     text-align: left;
 }
@@ -62,13 +63,13 @@ table tr:hover {
 
 /* Nút chỉnh sửa và xóa */
 .edit-btn, .delete-btn {
-    padding: 6px 12px;
-    margin: 0 5px;
+    padding: 0.5vw 1vw;
+    margin: 0 0.5vw;
     cursor: pointer;
     border: none;
     border-radius: 4px;
+    font-size: 1vw;
 }
-
 .edit-btn {
     background-color: #ffa500;
     color: white;
@@ -87,32 +88,49 @@ table tr:hover {
     background-color: #e60000;
 }
 
-/* Form thêm mới khách hàng */
 form {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 1vw;
     justify-content: center;
     margin-top: 20px;
 }
 
 form input {
-    padding: 8px;
-    width: 200px;
+    padding: 1vw;
+    flex: 1 1 200px; /* Đặt kích thước tối thiểu cho các input */
+    max-width: 100%; /* Đảm bảo input không vượt quá chiều rộng container */
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 1vw;
 }
 
 form button {
-    padding: 8px 16px;
+    padding: 1vw 2vw;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 1vw;
 }
 
 form button:hover {
     background-color: #45a049;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 600px) {
+    form {
+        flex-direction: column; /* Chuyển sang dạng cột trên màn hình nhỏ */
+    }
+
+    form input, form button {   
+        width: 100%; /* Đảm bảo các phần tử chiếm đủ chiều rộng */
+        flex: 1 1 30px; /* Đặt kích thước tối thiểu cho các input */
+        padding: 1vw; /* Giảm padding để chiều cao nhỏ hơn */
+        font-size: 3vw; /* Giảm font-size cho màn hình nhỏ */
+    }
 }
 
 </style>
