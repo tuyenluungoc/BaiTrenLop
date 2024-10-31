@@ -1,248 +1,271 @@
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
+    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giỏ Hàng - DJI</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
+    <title>Giỏ hàng</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/static/web/css/style.css">
+</head>
+
+<style>
+    
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.cart-table {
+    width: 80%;
+    border-collapse: collapse;
+}
+
+.cart-table thead th {
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+}
+
+.cart-table tbody td {
+    padding: 15px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.cart-table img {
+    width: 80px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.cart-table .d-flex {
+    align-items: center;
+}
+
+input[type="number"] {
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.text-end h3 {
+    font-weight: bold;
+    color: #333;
+}
+
+.checkout-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.checkout-btn:hover {
+    background-color: #0056b3;
+}
+
+
+  
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+        .menu {
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Header Menu */
-        .header {
-            background-color: #333;
-            padding: 15px;
-            color: white;
-            text-align: center;
+        .search-cart {
+            flex-direction: column;
+            gap: 5px;
+}
+
+        .cart-table img {
+            width: 60px;
         }
 
-        .header h1 {
-            margin: 0;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-        }
-
-        .nav a {
-            padding: 15px 20px;
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .nav a:hover {
-            background-color: #555;
-        }
-
-        /* Cart Section */
-        .container {
-            width: 80%;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-
-        .cart-item img {
-            width: 100px;
-        }
-
-        .total {
-            text-align: right;
-            margin-top: 20px;
-        }
-
-        .total h3 {
-            margin-right: 20px;
+        .cart-table input {
+            width: 50px;
         }
 
         .checkout-btn {
-            display: block;
             width: 100%;
-            padding: 15px;
-            background-color: #333;
-            color: white;
-            text-align: center;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
         }
-
-        .checkout-btn:hover {
-            background-color: #555;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
-        }
-
-        .footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            display: inline-block;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .social-icons img {
-            width: 30px;
-            margin: 0 10px;
-            vertical-align: middle;
-        }
-    </style>
-</head>
+    }
+</style>
 <body>
 
-<!-- Header Section -->
-<!-- Header -->
-<div class="header">
-    <div class="col"></div>
-    <div class="col-6">DJI Việt Nam - Đại lý ủy quyền chính thức của DJI tại Việt Nam</div>
-    <div class="col-6"></div>
-</div>
-
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Giới Thiệu</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Hướng Dẫn Mua Hàng</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Dịch Vụ Bảo Hành</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Sản Phẩm
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">DJI Mavic </a></li>
-                        <li><a class="dropdown-item" href="#">DJI Mini</a></li>
-                        <li><a class="dropdown-item" href="#">DJI Air</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Tin Tức </a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="/trang-chu.html"><img src="img/Logo1.jpg" alt="DJI Logo"></a>
+                </div>
+                <ul class="menu">
+                    <li><a href="/gioi-thieu.html">Giới Thiệu</a></li>
+                    <li><a href="/san-pham.html">Sản Phẩm</a></li>
+                    <li><a href="/huong-dan-mua-hang.html">Hướng Dẫn Mua Hàng</a></li>
+                    <li><a href="/bao-hanh.html">Dịch Vụ Bảo Hành</a></li>
+                    <li><a href="/tin-tuc.html">Tin Tức</a></li>
+                    <li><a href="/lien-he.html">Liên Hệ</a></li>
+                </ul>
+                <div class="search-cart">
+                    <input type="text" placeholder="Tìm kiếm">
+                    <i class="fas fa-search"></i>
+                    <a href="/gio-hang.html"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Product Category Section -->
+       
+    </header>
+    
+    <!-- Cart Section -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Giỏ Hàng Của Bạn</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered cart-table">
+                <thead class="table-light">
+                    <tr>
+                        <th>Sản Phẩm</th>
+                        <th>Giá</th>
+                        <th>Số Lượng</th>
+                        <th>Tổng Cộng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="https://dji-vietnam.vn/wp-content/uploads/2023/04/Flycam-DJI-Mavic-3-Pro-800x800.jpg"
+                                    alt="Sản phẩm 1">
+<p class="ms-3 mb-0">DJI Mavic 3</p>
+                            </div>
+                        </td>
+                        <td>30,000,000 VND</td>
+                        <td><input type="number" value="1" min="1" max="10" class="form-control" style="width: 60px;">
+                        </td>
+                        <td>30,000,000 VND</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="https://dji-vietnam.vn/wp-content/uploads/2023/07/DJI-Air-3-7-800x800.jpg"
+                                    alt="Sản phẩm 2">
+                                <p class="ms-3 mb-0">DJI Air 3</p>
+                            </div>
+                        </td>
+                        <td>25,000,000 VND</td>
+                        <td><input type="number" value="1" min="1" max="10" class="form-control" style="width: 60px;">
+                        </td>
+                        <td>25,000,000 VND</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
-</nav>
 
-<!-- Cart Section -->
-<div class="container">
-    <h2>Giỏ Hàng Của Bạn</h2>
-    <table>
-        <thead>
-        <tr>
-            <th>Sản Phẩm</th>
-            <th>Giá</th>
-            <th>Số Lượng</th>
-            <th>Tổng Cộng</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="cart-item">
-            <td>
-                <img src="https://dji-vietnam.vn/wp-content/uploads/2023/04/Flycam-DJI-Mavic-3-Pro-800x800.jpg" alt="Sản phẩm 1">
-                <p>DJI Mavic 3</p>
-            </td>
-            <td>30,000,000 VND</td>
-            <td>
-                <input type="number" value="1" min="1" max="10" style="width: 50px;">
-            </td>
-            <td>30,000,000 VND</td>
-        </tr>
-        <tr class="cart-item">
-            <td>
-                <img src="https://dji-vietnam.vn/wp-content/uploads/2023/07/DJI-Air-3-7-800x800.jpg" alt="Sản phẩm 2">
-                <p>DJI Air 3</p>
-            </td>
-            <td>25,000,000 VND</td>
-            <td>
-                <input type="number" value="1" min="1" max="10" style="width: 50px;">
-            </td>
-            <td>25,000,000 VND</td>
-        </tr>
-        </tbody>
-    </table>
-
-    <!-- Total Section -->
-    <div class="total">
-        <h3>Tổng Cộng: 55,000,000 VND</h3>
+        <!-- Total and Checkout -->
+        <div class="text-end my-4">
+            <h3>Tổng Cộng: 55,000,000 VND</h3>
+        </div>
+        <a href="./thanh-toan.html" class="checkout-btn">Thanh Toán</a>
     </div>
 
-    <!-- Checkout Button -->
-    <a href="./thanh-toan.html" class="checkout-btn">Thanh Toán</a>
-</div>
-
-<!-- Footer Section -->
-<div class="footer">
-    <p>© 2024 DJI Vietnam. All Rights Reserved.</p>
-    <p>
-        <a href="#">Chính Sách Bảo Mật</a> |
-        <a href="#">Điều Khoản Sử Dụng</a> |
-        <a href="#">Hỗ Trợ</a>
-    </p>
-    <div class="social-icons">
-        <a href="#"><img src="https://example.com/facebook-icon.png" alt="Facebook"></a>
-        <a href="#"><img src="https://example.com/twitter-icon.png" alt="Twitter"></a>
-        <a href="#"><img src="https://example.com/instagram-icon.png" alt="Instagram"></a>
-    </div>
-</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <section class="features">
+            <div class="container">
+                <div class="feature">
+                    <i class="fas fa-shipping-fast"></i>
+                    <p>Giao hàng toàn quốc</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-credit-card"></i>
+                    <p>Hỗ trợ trả góp nhanh chóng</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>Bảo hành chính hãng</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-store"></i>
+                    <p>DJI Store tại Việt Nam</p>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <br>
+        <br>
+        <div class="container">
+            <div class="footer-section">
+                <h3>DJI BY VJO VIETNAM</h3>
+                <p>Địa chỉ: Số 279 Đường Lĩnh Nam, Phường Vĩnh Hưng, Quận Hoàng Mai, TP Hà Nội, Việt Nam</p>
+                <p>Hotline: 0815.000.060</p>
+                <p>DKKD số 0108676636 do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp ngày 29/03/2019</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fas fa-phone"></i>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>SẢN PHẨM</h3>
+                <ul>
+                    <li>Flycam</li>
+                    <li>Gimbal</li>
+                    <li>FPV</li>
+                    <li>Phụ kiện flycam</li>
+                    <li>Phụ kiện gimbal</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>HỆ THỐNG PHÂN PHỐI SẢN PHẨM</h3>
+                <ul>
+                    <li>DJI Store Hà Nội</li>
+                    <li>TP. Hồ Chí Minh</li>
+                    <li>Đà Nẵng</li>
+                    <li>Quảng Ninh</li>
+                    <li>Nghệ An</li>
+                    <li>Thanh Hóa</li>
+                    <li>Đắk Lắk</li>
+                    <li>Khánh Hòa</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>ĐĂNG KÍ</h3>
+                <p>Đăng kí để nhận các thông báo về khuyến mãi và các thông tin hữu ích về sản phẩm.</p>
+                <form>
+                    <input type="text" placeholder="Tên">
+                    <input type="email" placeholder="Email">
+                    <input type="text" placeholder="Số điện thoại">
+                    <button type="submit">ĐĂNG KÍ</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+    
 
 </body>
+
 </html>

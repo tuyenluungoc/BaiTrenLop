@@ -1,62 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thống kê</title>
-    <link rel="stylesheet" href="dashboard.css">
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script><link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/static/web/css/style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quản Lý Bán Hàng</title>
+        <link rel="stylesheet" href="admin.css">
+    </head>
 <div class="container">
+<style>
+  
 
+
+.dashboard-container {
+    max-width: 1200px;
+    /* margin: 0 auto; */
+    margin-left: 300px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+/* Thống kê nhanh */
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.stat-box {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    width: 23%;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-box h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.stat-box p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Biểu đồ */
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chart {
+    width: 48%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chart h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+canvas {
+    width: 100%;
+    height: 300px;
+}
+
+
+</style>
 <body>
     <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo">
-                    <a href="/trang-chu.html"><img src="img/Logo1.jpg" alt="DJI Logo"></a>
-                </div>
-                <ul class="menu">
-                    <li><a href="/gioi-thieu.html">Giới Thiệu</a></li>
-                    <li><a href="/san-pham.html">Sản Phẩm</a></li>
-                    <li><a href="/huong-dan-mua-hang.html">Hướng Dẫn Mua Hàng</a></li>
-                    <li><a href="/bao-hanh.html">Dịch Vụ Bảo Hành</a></li>
-                    <li><a href="/tin-tuc.html">Tin Tức</a></li>
-                    <li><a href="/lien-he.html">Liên Hệ</a></li>
-                </ul>
-                <div class="search-cart">
-                    <input type="text" placeholder="Tìm kiếm">
-                    <i class="fas fa-search"></i>
-                    <a href="/gio-hang.html"><i class="fas fa-shopping-cart"></i></a>
-                </div>
-            </div>
-        </nav>
-    
-        <!-- Product Category Section -->
-       
+        <div class="logo">DJI FLYCAM</div>
+        <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+        <div class="header-icons">
+            <div class="notifications">🔔</div>
+            <div class="user-avatar">👤</div> 
+        </div>
     </header>
+
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+        <nav class="menu">
+            <a href="/thong-ke.html">Trang Chủ</a>
+            <a href="/ql-don-hang.html">Quản Lý Đơn Hàng</a>
+            <a href="/ql-san-pham.html">Quản Lý Sản Phẩm</a>
+            <a href="/ql-khach-hang.html">Quản Lý Khách Hàng</a>
+            <a href="/thong-ke.html">Thống Kê và Báo Cáo</a>
+            
+        </nav>
+    </aside>
+
     <div class="dashboard-container">
-        <h1 class="statistical">Dashboard - Flycam Store</h1>
+        <h1 class="statistical">Thống kê</h1>
         
         <!-- Thống kê nhanh -->
         <div class="stats-container">
             <div class="stat-box">
-                <h3>Total Revenue</h3>
+                <h3>Tổng doanh thu</h3>
                 <p>$12,500</p>
             </div>
             <div class="stat-box">
-                <h3>Total Invoices</h3>
+                <h3>Tổng số hóa đơn</h3>
                 <p>150</p>
             </div>
             <div class="stat-box">
-                <h3>Top Selling Product</h3>
+                <h3>Sản Phẩm bán chạy</h3>
                 <p>DJI Air 2S</p>
             </div>
             <div class="stat-box">
-                <h3>Completed Orders</h3>
+                <h3>Đơn hàng đã hoàn thành</h3>
                 <p>100</p>
             </div>
         </div>
@@ -64,11 +128,11 @@
         <!-- Biểu đồ doanh thu và trạng thái đơn hàng -->
         <div class="chart-container">
             <div class="chart" id="revenueChart">
-                <h2>Revenue Over Time</h2>
+                <h2>Doanh thu theo thời gian</h2>
                 <canvas id="revenueCanvas"></canvas>
             </div>
             <div class="chart" id="orderStatusChart">
-                <h2>Order Status Breakdown</h2>
+                <h2>Phân tích đơn hàng</h2>
                 <canvas id="orderStatusCanvas"></canvas>
             </div>
         </div>
@@ -78,7 +142,7 @@
     <script src="dashboard.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <!-- Footer -->
-    <footer class="footer">
+    <!-- <footer class="footer">
         <section class="features">
             <div class="container">
                 <div class="feature">
@@ -149,7 +213,7 @@
                 </form>
             </div>
         </div>
-    </footer>
+    </footer> -->
 </div>
 </body>
 </html>

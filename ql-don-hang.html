@@ -3,40 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý đơn hàng</title>
-    <link rel="stylesheet" href="/static/web/css/style.css">
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Quản Lý Sản Phẩm - Fly Cam</title>
+    <link rel="stylesheet" href="admin.css">
 </head>
+<style>
 
+
+
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Container chính */
+.container {
+  padding: 20px;
+  background-color: #f5f7fa;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+/* Tiêu đề */
+.container h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Chức năng tìm kiếm và lọc */
+.search-filter {
+  display: flex;
+  justify-content: center; /* Căn giữa */
+  margin-bottom: 20px; /* Khoảng cách dưới */
+}
+
+.search-filter input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc; /* Viền nhẹ cho ô tìm kiếm */
+  border-radius: 4px; /* Bo góc cho ô tìm kiếm */
+  width: 300px; /* Chiều rộng ô tìm kiếm */
+  margin-right: 10px; /* Khoảng cách bên phải */
+}
+
+.search-filter select {
+  padding: 10px;
+  border: 1px solid #ccc; /* Viền nhẹ cho dropdown */
+  border-radius: 4px; /* Bo góc cho dropdown */
+}
+
+/* Bảng quản lý đơn hàng */
+#invoiceTable {
+  width: 100%; /* Chiếm toàn bộ chiều rộng */
+  border-collapse: collapse; /* Gộp viền cho các ô */
+  margin-top: 20px; /* Khoảng cách trên bảng */
+}
+
+#invoiceTable thead {
+  background-color: #007bff; /* Màu nền cho tiêu đề bảng */
+  color: #fff; /* Màu chữ cho tiêu đề bảng */
+}
+
+#invoiceTable th, 
+#invoiceTable td {
+  padding: 12px; /* Khoảng cách bên trong ô */
+  text-align: left; /* Căn trái cho chữ */
+  border: 1px solid #ccc; /* Viền cho các ô */
+}
+#invoiceTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#invoiceTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Nút thao tác */
+.view-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-btn:hover {
+  background-color: #218838;
+}
+
+/* CSS cho phân trang */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: 1px solid #007bff;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+}
+
+.pagination #currentPage {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Status styling */
+.status {
+  font-weight: bold; /* Chữ đậm cho trạng thái */
+}
+
+.status.Completed {
+  color: green; /* Màu xanh cho trạng thái hoàn thành */
+}
+
+.status.Pending {
+  color: orange; /* Màu cam cho trạng thái đang chờ */
+}
+
+
+.tong{
+    width: 80%;         /* 4/5 màn hình ngang */
+  margin-left: auto;     /* Đặt lề bên trái bằng 0 để căn sát mép trái */
+  height: 100vh;      /* Chiều cao toàn màn hình, điều chỉnh theo ý muốn */
+  background-color: #f5f5f5;  /* Ví dụ nền sáng cho dễ nhìn */
+  padding: 1rem;      /* Padding cho nội dung bên trong */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Đổ bóng nhẹ */
+  border-radius: 8px; /* Bo góc */
+  margin-top: 50px;
+} */
+
+</style>
 <body>
-    <div class="container">
+    <!-- Header -->
     <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo">
-                    <a href="/trang-chu.html"><img src="img/Logo1.jpg" alt="DJI Logo"></a>
-                </div>
-                <ul class="menu">
-                    <li><a href="/gioi-thieu.html">Giới Thiệu</a></li>
-                    <li><a href="/san-pham.html">Sản Phẩm</a></li>
-                    <li><a href="/huong-dan-mua-hang.html">Hướng Dẫn Mua Hàng</a></li>
-                    <li><a href="/bao-hanh.html">Dịch Vụ Bảo Hành</a></li>
-                    <li><a href="/tin-tuc.html">Tin Tức</a></li>
-                    <li><a href="/lien-he.html">Liên Hệ</a></li>
-                </ul>
-                <div class="search-cart">
-                    <input type="text" placeholder="Tìm kiếm">
-                    <i class="fas fa-search"></i>
-                    <a href="/gio-hang.html"><i class="fas fa-shopping-cart"></i></a>
-                </div>
-            </div>
-        </nav>
-    
-        <!-- Product Category Section -->
-       
+        <div class="logo">DJI FLYCAM</div>
+        <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+        <div class="header-icons">
+            <div class="notifications">🔔</div>
+            <div class="user-avatar">👤</div> 
+        </div>
     </header>
-    <div class="">
+
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+        <nav class="menu">
+            <a href="/thong-ke.html">Trang Chủ</a>
+            <a href="/ql-don-hang.html">Quản Lý Đơn Hàng</a>
+            <a href="/ql-san-pham.html">Quản Lý Sản Phẩm</a>
+            <a href="/ql-khach-hang.html">Quản Lý Khách Hàng</a>
+            <a href="/thong-ke.html">Thống Kê và Báo Cáo</a>
+            
+        </nav>
+    </aside>
+
+    <div class="tong">
         <h1>Quản lý đơn hàng</h1>
 
         <!-- Chức năng tìm kiếm và lọc -->
@@ -53,7 +191,7 @@
         <table id="invoiceTable">
             <thead>
                 <tr>
-                    <th>Invoice ID</th>
+                    <th>order_code </th>
                     <th>Customer Name</th>
                     <th>Date</th>
                     <th>Total Amount</th>
@@ -85,6 +223,28 @@
                     
                     </td>
                 </tr>
+                <tr>
+                    <td>INV004</td>
+                    <td>Lebon James</td>
+                    <td>2024-10-18</td>
+                    <td>$450</td>
+                    <td class="status">Pending</td>
+                    <td>
+                        <button class="view-btn">View</button>
+                    
+                    </td>
+                </tr>
+                <tr>
+                    <td>INV005</td>
+                    <td>Ronaldo</td>
+                    <td>2024-10-18</td>
+                    <td>$95000</td>
+                    <td class="status">Pending</td>
+                    <td>
+                        <button class="view-btn">View</button>
+                    
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -99,7 +259,7 @@
             <button id="nextPage">Next</button>
         </div>
     </div>
-    <footer class="footer">
+    <!-- <footer class="footer">
         <section class="features">
             <div class="container">
                 <div class="feature">
@@ -170,7 +330,7 @@
                 </form>
             </div>
         </div>
-    </footer>
+    </footer> -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="script.js"></script>
 </div>

@@ -1,0 +1,140 @@
+/* admin.css */
+
+/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body */
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: #2C3E50;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.search-bar {
+    width: 300px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-icons .notifications, .header-icons .user-avatar {
+    font-size: 1.5em;
+    cursor: pointer;
+    background-color: #af664c ;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 20%;
+    height: calc(100vh - 60px);
+     background-color: #2C3E50;
+    padding-top: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .menu a {
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .menu a:hover {
+    background-color: #388E3C;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 200px;
+    padding: 80px 20px 20px 20px;
+    flex-grow: 1;
+    min-height: 100vh;
+    background-color: #f4f6f8;
+}
+
+.main-content h1 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Dashboard */
+.dashboard {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.dashboard-item {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.2em;
+    color: #555;
+    text-align: center;
+}
+
+/* Latest Orders and Top Products */
+.latest-orders, .top-products {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.latest-orders h2, .top-products h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
