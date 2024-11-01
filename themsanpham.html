@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Sản Phẩm Fly Cam Mới</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<style>
+  /* Reset & General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Main Content */
+.main-content {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f4f4f4;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Title */
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Form Labels and Inputs */
+.product-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.product-form input[type="text"],
+.product-form input[type="date"],
+.product-form input[type="file"],
+.product-form select,
+.product-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+}
+
+/* Textarea */
+.product-form textarea {
+    resize: vertical;
+}
+
+/* Submit Button */
+.product-form button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #1ABC9C;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.product-form button:hover {
+    background-color: #16A085;
+}
+.btn-submit{
+  display: flex;
+  padding: 5px;
+}
+.btn-them{
+margin-right:5px ;
+
+}
+</style>
+<body>
+    <header class="header">
+        <div class="logo">DJI FLYCAM</div>
+        <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+        <div class="header-icons">
+            <div class="notifications">🔔</div>
+            <div class="user-avatar">👤</div> 
+        </div>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+        <nav class="menu">
+            <a href="/thong-ke.html">Trang Chủ</a>
+            <a href="/ql-don-hang.html">Quản Lý Đơn Hàng</a>
+            <a href="/ql-san-pham.html">Quản Lý Sản Phẩm</a>
+            <a href="/ql-khach-hang.html">Quản Lý Khách Hàng</a>
+            <a href="/thong-ke.html">Thống Kê và Báo Cáo</a>
+            
+        </nav>
+    </aside>
+    <!-- Main Form Content -->
+    <main class="main-content">
+        <h1>Thêm Sản Phẩm Fly Cam Mới</h1>
+
+        <form class="product-form">
+           
+            <!-- Product Name -->
+            <label for="name">Tên Sản Phẩm</label>
+            <input type="text" id="name" name="name" required>
+
+            <!-- Description -->
+            <label for="description">Mô Tả</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <label for="manufacturer_code" ></label>
+            <select id="manufacturer_code" name="manufacturer_code" required>
+                <option value="">Chọn Nhà Sản Xuất</option>
+                <option value="MFG001">Nhà Sản Xuất A</option>
+                <option value="MFG002">Nhà Sản Xuất B</option>
+                <option value="MFG003">Nhà Sản Xuất C</option>
+                <!-- Thêm các tùy chọn khác nếu cần -->
+            </select>
+
+            <!-- Category Code (Dropdown) -->
+            <label for="category_code">Mã Danh Mục</label>
+            <select id="category_code" name="category_code" required>
+                <option value="">Chọn Danh Mục</option>
+                <option value="CAT001">Danh Mục A</option>
+                <option value="CAT002">Danh Mục B</option>
+                <option value="CAT003">Danh Mục C</option>
+                <!-- Thêm các tùy chọn khác nếu cần -->
+            </select>
+        
+            <!-- Status -->
+            <label for="status">Trạng Thái</label>
+            <select id="status" name="status" required>
+                <option value="available">Còn Hàng</option>
+                <option value="unavailable">Hết Hàng</option>
+            </select>
+
+            <!-- Image -->
+            <label for="image">Hình Ảnh</label>
+            <input type="file" id="image" name="image" accept="image/*">
+
+            <!-- Product Type -->
+            <label for="id_product_type">Loại Sản Phẩm</label>
+            <select type="text" id="id_product_type" name="id_product_type" required>
+            <option value="">Chọn Loại Sản Phẩm</option>
+            <option value="CAT001">Sản Phẩm A</option>
+            <option value="CAT002">SP b</option>
+            <option value="CAT003">SP C</option>
+            </select>
+            <!-- Submit Button -->
+            
+            <div class="btn-submit">
+              <button class="btn-them" type="submit">Thêm Sản Phẩm</button>
+             <a href="/ql-san-pham.html"><button type="">Quay Lại</button></a>
+            
+            </div>
+        </form>
+    </main>
+
+</body>
+</html>

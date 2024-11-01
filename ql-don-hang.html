@@ -3,40 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý đơn hàng</title>
-    <link rel="stylesheet" href="/static/web/css/style.css">
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
+    <title>Quản Lý Sản Phẩm - Fly Cam</title>
+    <link rel="stylesheet" href="admin.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-<body>
-    <div class="container">
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo">
-                    <a href="/trang-chu.html"><img src="img/Logo1.jpg" alt="DJI Logo"></a>
-                </div>
-                <ul class="menu">
-                    <li><a href="/gioi-thieu.html">Giới Thiệu</a></li>
-                    <li><a href="/san-pham.html">Sản Phẩm</a></li>
-                    <li><a href="/huong-dan-mua-hang.html">Hướng Dẫn Mua Hàng</a></li>
-                    <li><a href="/bao-hanh.html">Dịch Vụ Bảo Hành</a></li>
-                    <li><a href="/tin-tuc.html">Tin Tức</a></li>
-                    <li><a href="/lien-he.html">Liên Hệ</a></li>
-                </ul>
-                <div class="search-cart">
-                    <input type="text" placeholder="Tìm kiếm">
-                    <i class="fas fa-search"></i>
-                    <a href="/gio-hang.html"><i class="fas fa-shopping-cart"></i></a>
-                </div>
-            </div>
-        </nav>
-    
-        <!-- Product Category Section -->
+        /* Container chính */
+        .container {
+            padding: 20px;
+            background-color: #f5f7fa;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        /* Tiêu đề */
+        .container h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Chức năng tìm kiếm và lọc */
+        .search-filter {
+            display: flex;
+            justify-content: center; /* Căn giữa */
+            margin-bottom: 20px; /* Khoảng cách dưới */
+        }
+
+        .search-filter input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc; /* Viền nhẹ cho ô tìm kiếm */
+            border-radius: 4px; /* Bo góc cho ô tìm kiếm */
+            width: 300px; /* Chiều rộng ô tìm kiếm */
+            margin-right: 10px; /* Khoảng cách bên phải */
+        }
+
+        .search-filter select {
+            padding: 10px;
+            border: 1px solid #ccc; /* Viền nhẹ cho dropdown */
+            border-radius: 4px; /* Bo góc cho dropdown */
+        }
+
+        /* Bảng quản lý đơn hàng */
+        #invoiceTable {
+            width: 100%; /* Chiếm toàn bộ chiều rộng */
+            border-collapse: collapse; /* Gộp viền cho các ô */
+            margin-top: 20px; /* Khoảng cách trên bảng */
+        }
+
+        #invoiceTable thead {
+            background-color: #007bff; /* Màu nền cho tiêu đề bảng */
+            color: #fff; /* Màu chữ cho tiêu đề bảng */
+        }
+
+        #invoiceTable th, 
+        #invoiceTable td {
+            padding: 12px; /* Khoảng cách bên trong ô */
+            text-align: left; /* Căn trái cho chữ */
+            border: 1px solid #ccc; /* Viền cho các ô */
+        }
+
+        #invoiceTable tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        #invoiceTable tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Nút thao tác */
+        .view-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .view-btn:hover {
+            background-color: #218838;
+        }
+
+        /* CSS cho phân trang */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .pagination button {
+            padding: 8px 16px;
+            font-size: 14px;
+            border: 1px solid #007bff;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .pagination button:hover {
+            background-color: #0056b3;
+        }
+
+        .pagination #currentPage {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Status styling */
+        .status {
+            font-weight: bold; /* Chữ đậm cho trạng thái */
+        }
+
+        .status.Completed {
+            color: green; /* Màu xanh cho trạng thái hoàn thành */
+        }
+
+        .status.Pending {
+            color: orange; /* Màu cam cho trạng thái đang chờ */
+        }
+
        
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">DJI FLYCAM</div>
+        <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+        <div class="header-icons">
+            <div class="notifications">🔔</div>
+            <div class="user-avatar">👤</div> 
+        </div>
     </header>
-    <div class="">
+    <button class="menu-toggle">☰</button>
+
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+        <nav class="menu">
+            <a href="/thong-ke.html">Trang Chủ</a>
+            <a href="/ql-don-hang.html">Quản Lý Đơn Hàng</a>
+            <a href="/ql-san-pham.html">Quản Lý Sản Phẩm</a>
+            <a href="/ql-khach-hang.html">Quản Lý Khách Hàng</a>
+            <a href="/thong-ke.html">Thống Kê và Báo Cáo</a>
+            <a href="/ql-baiviet.html">Danh sách bài Viết</a>
+        </nav>
+    </aside>
+
+    <div class="main-content">
         <h1>Quản lý đơn hàng</h1>
 
         <!-- Chức năng tìm kiếm và lọc -->
@@ -53,7 +179,7 @@
         <table id="invoiceTable">
             <thead>
                 <tr>
-                    <th>Invoice ID</th>
+                    <th>order_code </th>
                     <th>Customer Name</th>
                     <th>Date</th>
                     <th>Total Amount</th>
@@ -67,30 +193,20 @@
                     <td>INV001</td>
                     <td>John Doe</td>
                     <td>2024-10-15</td>
-                    <td>$1,200</td>
-                    <td class="status">Completed</td>
-                    <td>
-                        <button class="view-btn">View</button>
-                     
-                    </td>
+                    <td>$200</td>
+                    <td class="status Completed">Completed</td>
+                    <td><button class="view-btn">View</button></td>
                 </tr>
                 <tr>
                     <td>INV002</td>
                     <td>Jane Smith</td>
-                    <td>2024-10-18</td>
-                    <td>$950</td>
-                    <td class="status">Pending</td>
-                    <td>
-                        <button class="view-btn">View</button>
-                    
-                    </td>
+                    <td>2024-10-16</td>
+                    <td>$150</td>
+                    <td class="status Pending">Pending</td>
+                    <td><button class="view-btn">View</button></td>
                 </tr>
             </tbody>
         </table>
-
-     
-
-        
 
         <!-- Phân trang -->
         <div class="pagination">
@@ -99,80 +215,86 @@
             <button id="nextPage">Next</button>
         </div>
     </div>
-    <footer class="footer">
-        <section class="features">
-            <div class="container">
-                <div class="feature">
-                    <i class="fas fa-shipping-fast"></i>
-                    <p>Giao hàng toàn quốc</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-credit-card"></i>
-                    <p>Hỗ trợ trả góp nhanh chóng</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-shield-alt"></i>
-                    <p>Bảo hành chính hãng</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-store"></i>
-                    <p>DJI Store tại Việt Nam</p>
-                </div>
-            </div>
-        </section>
-        <hr>
-        <br>
-        <br>
-        <div class="container">
-            <div class="footer-section">
-                <h3>DJI BY VJO VIETNAM</h3>
-                <p>Địa chỉ: Số 279 Đường Lĩnh Nam, Phường Vĩnh Hưng, Quận Hoàng Mai, TP Hà Nội, Việt Nam</p>
-                <p>Hotline: 0815.000.060</p>
-                <p>DKKD số 0108676636 do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp ngày 29/03/2019</p>
-                <div class="social-icons">
-                    <i class="fab fa-facebook"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fas fa-phone"></i>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>SẢN PHẨM</h3>
-                <ul>
-                    <li>Flycam</li>
-                    <li>Gimbal</li>
-                    <li>FPV</li>
-                    <li>Phụ kiện flycam</li>
-                    <li>Phụ kiện gimbal</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>HỆ THỐNG PHÂN PHỐI SẢN PHẨM</h3>
-                <ul>
-                    <li>DJI Store Hà Nội</li>
-                    <li>TP. Hồ Chí Minh</li>
-                    <li>Đà Nẵng</li>
-                    <li>Quảng Ninh</li>
-                    <li>Nghệ An</li>
-                    <li>Thanh Hóa</li>
-                    <li>Đắk Lắk</li>
-                    <li>Khánh Hòa</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>ĐĂNG KÍ</h3>
-                <p>Đăng kí để nhận các thông báo về khuyến mãi và các thông tin hữu ích về sản phẩm.</p>
-                <form>
-                    <input type="text" placeholder="Tên">
-                    <input type="email" placeholder="Email">
-                    <input type="text" placeholder="Số điện thoại">
-                    <button type="submit">ĐĂNG KÍ</button>
-                </form>
-            </div>
-        </div>
-    </footer>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="script.js"></script>
-</div>
+    
+    <!-- Javascript cho chức năng tìm kiếm và lọc -->
+    <script>
+        // Dữ liệu mẫu
+        const invoices = [
+            { order_code: "INV001", customer: "John Doe", date: "2024-10-15", amount: "$200", status: "Completed" },
+            { order_code: "INV002", customer: "Jane Smith", date: "2024-10-16", amount: "$150", status: "Pending" },
+            // Thêm dữ liệu khác nếu cần
+        ];
+
+        // Hàm hiển thị hóa đơn
+        function displayInvoices(filter = 'all') {
+            const tableBody = document.querySelector('#invoiceTable tbody');
+            tableBody.innerHTML = ''; // Xóa nội dung cũ
+
+            invoices.forEach(invoice => {
+                if (filter === 'all' || invoice.status === filter) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${invoice.order_code}</td>
+                        <td>${invoice.customer}</td>
+                        <td>${invoice.date}</td>
+                        <td>${invoice.amount}</td>
+                        <td class="status ${invoice.status}">${invoice.status}</td>
+                        <td><button class="view-btn">View</button></td>
+                    `;
+                    tableBody.appendChild(row);
+                }
+            });
+        }
+
+        // Sự kiện tìm kiếm
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filterStatus = document.getElementById('filterStatus').value;
+            const filteredInvoices = invoices.filter(invoice => {
+                const matchesSearch = invoice.customer.toLowerCase().includes(searchTerm) || invoice.order_code.toLowerCase().includes(searchTerm);
+                const matchesStatus = filterStatus === 'all' || invoice.status === filterStatus;
+                return matchesSearch && matchesStatus;
+            });
+            displayFilteredInvoices(filteredInvoices);
+        });
+
+        // Sự kiện lọc theo trạng thái
+        document.getElementById('filterStatus').addEventListener('change', (e) => {
+            const filter = e.target.value;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filteredInvoices = invoices.filter(invoice => {
+                const matchesSearch = invoice.customer.toLowerCase().includes(searchTerm) || invoice.order_code.toLowerCase().includes(searchTerm);
+                const matchesStatus = filter === 'all' || invoice.status === filter;
+                return matchesSearch && matchesStatus;
+            });
+            displayFilteredInvoices(filteredInvoices);
+        });
+
+        function displayFilteredInvoices(invoices) {
+            const tableBody = document.querySelector('#invoiceTable tbody');
+            tableBody.innerHTML = ''; // Xóa nội dung cũ
+            invoices.forEach(invoice => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${invoice.order_code}</td>
+                    <td>${invoice.customer}</td>
+                    <td>${invoice.date}</td>
+                    <td>${invoice.amount}</td>
+                    <td class="status ${invoice.status}">${invoice.status}</td>
+                    <td><button class="view-btn">View</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        displayInvoices(); // Hiển thị tất cả hóa đơn lúc đầu
+    </script>
+    <script>
+      // JavaScript để điều khiển mở/đóng sidebar
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+          const sidebar = document.querySelector('.sidebar');
+          sidebar.classList.toggle('show');
+      });
+  </script>
 </body>
 </html>

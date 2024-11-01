@@ -1,378 +1,651 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang sản phẩm</title>
+    <title>Trang chủ Flycam</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-      *{
-        margin: 0;
-        padding: 0;
-      }
-        /* Thiết lập toàn bộ trang */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-      margin: 0;
-    }
-    
-    /* Container sản phẩm */
-    .product-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 20px;
-      max-width: 1200px;
-    }
-    
-    /* Container chính */
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      max-width: 1200px;
-    }
-    
-    /* Sidebar và bộ lọc */
-    .sidebar {
-      width: 300px;
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .filter-section {
-      margin-bottom: 20px;
-      padding: 15px;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-    }
-    
-    .filter-section h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    
-    .filter-section label {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
-    
-    .filter-section input[type="checkbox"],
-    .filter-section input[type="radio"] {
-      margin-right: 10px;
-    }
-    
-    .price-inputs {
-      display: flex;
-      gap: 10px;
-    }
-    
-    .price-inputs input {
-      width: 50%;
-      padding: 5px;
-      border: 1px solid #e0e0e0;
-      border-radius: 4px;
-    }
-    
-    .stars {
-      color: #ffcc00;
-    }
-    
-    /* Danh sách liên kết */
-    a {
-      color: #0066cc;
-      text-decoration: none;
-      font-size: 14px;
-    }
-    
-    a:hover {
-      text-decoration: underline;
-    }
-    
-    .category-list {
-      list-style-type: none;
-      padding: 0;
-    }
-    
-    /* Thẻ sản phẩm */
-    .product-card {
-      background-color: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      width: 180px;
-      text-align: center;
-      padding: 15px;
-    }
-    
-    .product-card img {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 10px;
-      border-radius: 5px;
-    }
-    
-    .product-card h4 {
-      font-size: 14px;
-      margin: 10px 0;
-    }
-    
-    .product-card p {
-      color: #000;
-      font-weight: bold;
-      margin: 5px 0;
-    }
-    
-    .product-card .discount-price {
-      color: red;
-    }
-    
-    .product-card .original-price {
-      text-decoration: line-through;
-      color: #777;
-      margin-right: 5px;
-    }
-    
-    /* Phản hồi người dùng */
-    .feedback-container {
-      background-color: #ffffff;
-      padding: 20px;
-      border: 2px solid #ffd700;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 600px;
-    }
-    
-    .feedback-container p {
-      margin-bottom: 20px;
-      font-size: 16px;
-      color: #333333;
-    }
-    
-    .feedback-options {
-      display: flex;
-      justify-content: space-around;
-    }
-    
-    .feedback-option {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-    }
-    
-    .feedback-option img {
-      width: 50px;
-      height: auto;
-    }
-    
-    .feedback-option span {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #ff9900;
-    }
-    
-       </style>
-    
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/static/web/css/style.css">
 </head>
-<body   >
-    <div class="sidebar">
-        <h3>Giá</h3>
-        <ul class="category-list">
-            <li><input type="radio" name="price" id="price1"> 0₫ - 10.000.000₫ </li>
-            <li><input type="radio" name="price" id="price2"> 10.000.000₫ - 20.000.000₫ </li>
-            <li><input type="radio" name="price" id="price3"> 20.000.000₫ - 30.000.000₫ </li>
-            <li><input type="radio" name="price" id="price4"> 30.000.000₫ - 50.000.000₫ </li>
-            <li><input type="radio" name="price" id="price5"> 50.000.000₫ - ∞ </li>
-        </ul>
-        <h3>Danh mục sản phẩm</h3>
-        <ul class="category-list">
-            <li><input type="radio" name="category" id="gimbal"> Gimbal </li>
-            <li><input type="radio" name="category" id="flycam"> Flycam </li>
-            <li><input type="radio" name="category" id="fpv"> FPV </li>
-            <li><input type="radio" name="category" id="microphone"> Microphone </li>
-            <li><input type="radio" name="category" id="action-camera"> Action Camera </li>
-            <li><input type="radio" name="category" id="charging-station"> Trạm sạc di động </li>
-        </ul>
-        <h3>
-            <h3>Product Series</h3>
-        <ul class="category-list">
-            <li><input type="radio" name="product" id="DJI Air"> DJI Air </li>
-            <li><input type="radio" name="product" id="DJI Avata"> DJI Avata </li>
-            <li><input type="radio" name="product" id="DJI Inspire"> DJI Inspire </li>
-            <li><input type="radio" name="product" id="DJI Mavic"> DJI Mavic </li>
-            <li><input type="radio" name="product" id="DJI Mini"> DJI Mini </li>
-            <li><input type="radio" name="product" id="DJI Power"> DJI Power </li>
-            <li><input type="radio" name="product" id="Osmo Action"> Osmo Action </li>
-            <li><input type="radio" name="product" id="Osmo Mobile"> Osmo Mobile </li>
-            <li><input type="radio" name="product" id="Osmo Pocket">Osmo Pocket</li>
-            <li><input type="radio" name="product" id="Ronin Cinema Cameras">Ronin Cinema Cameras</li>
-            <li><input type="radio" name="product" id="Ronin Stabilizers">Ronin Stabilizers</li>
-        </ul> 
-    </div>
+<style>
 
-   <div class="container ">
-    <div class="product-grid" >
-        <div class="product-card">
-            <a href="/spct.html">
-              <img src="/img/anh1.jpg" alt="Chân Máy Caplock Mantispod Z">
-            <h4>Chân Máy Caplock Mantispod Z</h4>
-            <p>990.000₫</p>
-            </a>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh2.jpg" alt="DJI Air 3 Series Propeller Guard Cho Air3/Air3s">
-            <h4>DJI Air 3 Series Propeller Guard Cho Air3/Air3s</h4>
-            <p>430.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh3.jpg" alt="DJI Air 3S">
-            <h4>DJI Air 3S</h4>
-            <p>25.000.000₫ - 34.600.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh4.jfif" alt="DJI Mic 2 Mobile Phone Adapter">
-            <h4>DJI Mic 2 Mobile Phone Adapter</h4>
-            <p><span class="original-price">700.000₫</span><span class="discount-price">550.000₫</span></p>
-        </div>
-           
-        
-        <!-- Add more product cards as needed -->
-    </div>
-    <div class="product-grid">
-        <div class="product-card">
-            <img src="/img/anh5.jfif" alt="Chân Máy Caplock Mantispod Z">
-            <h4>Chân Máy Caplock Mantispod Z</h4>
-            <p>990.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh6.jfif" alt="DJI Air 3 Series Propeller Guard Cho Air3/Air3s">
-            <h4>DJI Air 3 Series Propeller Guard Cho Air3/Air3s</h4>
-            <p>430.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh7.jfif" alt="DJI Air 3S">
-            <h4>DJI Air 3S</h4>
-            <p>25.000.000₫ - 34.600.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh8.jfif" alt="DJI Mic 2 Mobile Phone Adapter">
-            <h4>DJI Mic 2 Mobile Phone Adapter</h4>
-            <p><span class="original-price">700.000₫</span><span class="discount-price">550.000₫</span></p>
-        </div>
-           
-        
-        <!-- Add more product cards as needed -->
-    </div>
-    <div class="product-grid">
-        <div class="product-card">
-            <img src="/img/anh9.jfif" alt="Chân Máy Caplock Mantispod Z">
-            <h4>Chân Máy Caplock Mantispod Z</h4>
-            <p>990.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh10.jfif" alt="DJI Air 3 Series Propeller Guard Cho Air3/Air3s">
-            <h4>DJI Air 3 Series Propeller Guard Cho Air3/Air3s</h4>
-            <p>430.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh11.jfif" alt="DJI Air 3S">
-            <h4>DJI Air 3S</h4>
-            <p>25.000.000₫ - 34.600.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh12.jfif" alt="DJI Mic 2 Mobile Phone Adapter">
-            <h4>DJI Mic 2 Mobile Phone Adapter</h4>
-            <p><span class="original-price">700.000₫</span><span class="discount-price">550.000₫</span></p>
-        </div>
-           
-        
-        <!-- Add more product cards as needed -->
-    </div>
-    <div class="product-grid">
-        <div class="product-card">
-            <img src="/img/anh13.webp" alt="Chân Máy Caplock Mantispod Z">
-            <h4>Chân Máy Caplock Mantispod Z</h4>
-            <p>990.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh14.jfif" alt="DJI Air 3 Series Propeller Guard Cho Air3/Air3s">
-            <h4>DJI Air 3 Series Propeller Guard Cho Air3/Air3s</h4>
-            <p>430.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh15.jfif" alt="DJI Air 3S">
-            <h4>DJI Air 3S</h4>
-            <p>25.000.000₫ - 34.600.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh16.jfif" alt="DJI Mic 2 Mobile Phone Adapter">
-            <h4>DJI Mic 2 Mobile Phone Adapter</h4>
-            <p><span class="original-price">700.000₫</span><span class="discount-price">550.000₫</span></p>
-        </div>
-           
-        
-        <!-- Add more product cards as needed -->
-    </div>
-    <div class="product-grid">
-        <div class="product-card">
-            <img src="/img/anh17.jfif" alt="Chân Máy Caplock Mantispod Z">
-            <h4>Chân Máy Caplock Mantispod Z</h4>
-            <p>990.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh18.jfif" alt="DJI Air 3 Series Propeller Guard Cho Air3/Air3s">
-            <h4>DJI Air 3 Series Propeller Guard Cho Air3/Air3s</h4>
-            <p>430.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh19.jfif" alt="DJI Air 3S">
-            <h4>DJI Air 3S</h4>
-            <p>25.000.000₫ - 34.600.000₫</p>
-        </div>
-        <div class="product-card">
-            <img src="/img/anh20.jfif" alt="DJI Mic 2 Mobile Phone Adapter">
-            <h4>DJI Mic 2 Mobile Phone Adapter</h4>
-            <p><span class="original-price">700.000₫</span><span class="discount-price">550.000₫</span></p>
-        </div><br>
-       
-        
-        <!-- Add more product cards as needed -->
-    </div>
-    <div class="feedback-container">
-        <p>Ban có hài lòng với trải nghiệm tìm kiếm thông tin, sản phẩm trên website không?</p>
-        <div class="feedback-option img">
-            <div >
-                <img alt="Hài lòng"   src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/smiling-face-with-hearts_1f970.png">
-                <span>Hài lòng</span>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.sidebar {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 250px; /* Width of sidebar */
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #f4f4f4; /* Customize as needed */
+  padding: 20px;
+}
+
+
+
+.product-grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-card {
+  width: calc(25% - 20px); /* Adjusts four items per row, with spacing */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.product-card h4 {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.product-card p {
+  font-size: 1em;
+  color: #333;
+}
+
+/* Styling for discounted prices */
+.discount-price {
+  color: red;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* Container sản phẩm */
+.product-grid {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+gap: 20px;
+max-width: 1200px;
+}
+
+
+
+/* Sidebar và bộ lọc */
+.sidebar {
+width: 300px;
+background-color: #ffffff;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section {
+margin-bottom: 20px;
+padding: 15px;
+border: 1px solid #e0e0e0;
+border-radius: 8px;
+}
+
+.filter-section h3 {
+margin-top: 0;
+margin-bottom: 10px;
+font-size: 16px;
+font-weight: bold;
+}
+
+.filter-section label {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+font-size: 14px;
+}
+
+.filter-section input[type="checkbox"],
+.filter-section input[type="radio"] {
+margin-right: 10px;
+}
+
+.price-inputs {
+display: flex;
+gap: 10px;
+}
+
+.price-inputs input {
+width: 50%;
+padding: 5px;
+border: 1px solid #e0e0e0;
+border-radius: 4px;
+}
+
+.stars {
+color: #ffcc00;
+}
+
+/* Danh sách liên kết */
+a {
+color: #0066cc;
+text-decoration: none;
+font-size: 14px;
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+.category-list {
+list-style-type: none;
+padding: 0;
+}
+
+/* Thẻ sản phẩm */
+.product-card {
+background-color: #ffffff;
+border: 1px solid #ddd;
+border-radius: 5px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+width: 180px;
+text-align: center;
+padding: 15px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.product-card img {
+max-width: 100%;
+height: auto;
+margin-bottom: 10px;
+border-radius: 5px;
+}
+
+.product-card h4 {
+font-size: 14px;
+margin: 10px 0;
+}
+
+.product-card p {
+color: #000;
+font-weight: bold;
+margin: 5px 0;
+}
+
+.product-card .discount-price {
+color: red;
+}
+
+.product-card .original-price {
+text-decoration: line-through;
+color: #777;
+margin-right: 5px;
+}
+
+/* Phản hồi người dùng */
+.feedback-container {
+background-color: #ffffff;
+padding: 20px;
+border: 2px solid #ffd700;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+text-align: center;
+width: 600px;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.feedback-container p {
+margin-bottom: 20px;
+font-size: 16px;
+color: #333333;
+}
+
+.feedback-options {
+display: flex;
+justify-content: space-around;
+}
+
+.feedback-option {
+display: flex;
+flex-direction: column;
+align-items: center;
+cursor: pointer;
+}
+
+.feedback-option img {
+width: 50px;
+height: auto;
+}
+
+.feedback-option span {
+margin-top: 10px;
+font-size: 14px;
+color: #ff9900;
+}
+.slide-product{
+  display: flex;
+}
+
+.menu1 {
+            position: relative;
+            display: inline-block;
+        }
+        .menu-item {
+            color: #007bff;
+            text-decoration: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            padding: 20px;
+            z-index: 1;
+        }
+        .menu:hover .dropdown {
+            display: block;
+        }
+        .dropdown h3 {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .dropdown ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .dropdown ul li {
+            width: 50%;
+            margin-bottom: 8px;
+        }
+        .dropdown ul li a {
+            color: #555;
+            text-decoration: none;
+        }
+        .dropdown ul li a:hover {
+            color: #007bff;
+        }
+        .dropdown-section {
+            width: 33.33%;
+            padding: 10px;
+        }
+        .dropdown-container {
+            display: flex;
+        }
+
+ </style>
+<body>
+  <header class="header">
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="/trang-chu.html"><img src="img/Logo1.jpg" alt="DJI Logo"></a>
             </div>
-            <div>
-                <img alt="Không hài lòng" src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/disappointed-face_1f61e.png">
-                <span>Không hài lòng</span>
+            <ul class="menu">
+                <li><a href="/gioi-thieu.html">Giới Thiệu</a></li>
+                <li><a href="/san-pham.html">
+
+                  <div class="menu1">
+                    <span class="menu-item">Sản phẩm</span>
+                    <div class="dropdown">
+                        <div class="dropdown-container">
+                            <div class="dropdown-section">
+                                <h3>DJI Mavic</h3>
+                                <ul>
+                                    <li><a href="#">Mavic 3 Pro</a></li>
+                                    <li><a href="#">Mavic 3 Classic</a></li>
+                                    <li><a href="#">Mavic 3 Enterprise</a></li>
+                                    <li><a href="#">Phụ kiện DJI Mavic</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-section">
+                                <h3>DJI Air</h3>
+                                <ul>
+                                    <li><a href="#">DJI Air 3S</a></li>
+                                    <li><a href="#">DJI Air 3</a></li>
+                                    <li><a href="#">Phụ kiện DJI Air</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-section">
+                                <h3>DJI Mini</h3>
+                                <ul>
+                                    <li><a href="#">DJI Mini 4 Pro</a></li>
+                                    <li><a href="#">DJI Mini 3</a></li>
+                                    <li><a href="#">DJI Mini 2 SE</a></li>
+                                    <li><a href="#">Phụ kiện DJI Mini</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="dropdown-container">
+                            <div class="dropdown-section">
+                                <h3>DJI FPV</h3>
+                                <ul>
+                                    <li><a href="#">DJI Avata 2</a></li>
+                                    <li><a href="#">DJI Avata</a></li>
+                                    <li><a href="#">DJI Goggles</a></li>
+                                    <li><a href="#">Phụ kiện DJI FPV</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-section">
+                                <h3>Sản phẩm khác</h3>
+                                <ul>
+                                    <li><a href="#">DJI Power</a></li>
+                                    <li><a href="#">DJI Inspire 3</a></li>
+                                    <li><a href="#">DJI Matrice 350 RTK</a></li>
+                                    <li><a href="#">Phụ kiện khác</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-section">
+                                <h3>DJI Mic</h3>
+                                <ul>
+                                    <li><a href="#">DJI Mic</a></li>
+                                    <li><a href="#">DJI Mic 2</a></li>
+                                    <li><a href="#">Phụ kiện DJI Mic</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a></li>
+                
+                <li><a href="/huong-dan-mua-hang.html">Hướng Dẫn Mua Hàng</a></li>
+                <li><a href="/bao-hanh.html">Dịch Vụ Bảo Hành</a></li>
+                <li><a href="/tin-tuc.html">Tin Tức</a></li>
+                <li><a href="/lien-he.html">Liên Hệ</a></li>
+            </ul>
+            <div class="search-cart">
+                <input type="text" placeholder="Tìm kiếm">
+                <i class="fas fa-search"></i>
+                <a href="/gio-hang.html"><i class="fas fa-shopping-cart"></i></a>
             </div>
         </div>
-    </div>
-   </div>
+    </nav>
+
+    <!-- Product Category Section -->
+   
+</header>
+
  
+</div>
 
+<div class="slide-product">
+  <div class="sidebar">
+    <div>
+      <h3>Giá</h3>
+      <ul class="category-list">
+          <li><input type="radio" name="price" id="price1"> 0₫ - 10.000.000₫ </li>
+          <li><input type="radio" name="price" id="price2"> 10.000.000₫ - 20.000.000₫ </li>
+          <li><input type="radio" name="price" id="price3"> 20.000.000₫ - 30.000.000₫ </li>
+          <li><input type="radio" name="price" id="price4"> 30.000.000₫ - 50.000.000₫ </li>
+          <li><input type="radio" name="price" id="price5"> 50.000.000₫ - ∞ </li>
+      </ul>
+      <h3>Danh mục sản phẩm</h3>
+      <ul class="category-list">
+          <li><input type="radio" name="category" id="gimbal"> Gimbal </li>
+          <li><input type="radio" name="category" id="flycam"> Flycam </li>
+          <li><input type="radio" name="category" id="fpv"> FPV </li>
+          <li><input type="radio" name="category" id="microphone"> Microphone </li>
+          <li><input type="radio" name="category" id="action-camera"> Action Camera </li>
+          <li><input type="radio" name="category" id="charging-station"> Trạm sạc di động </li>
+      </ul>
+      <h3>
+          <h3>Product Series</h3>
+      <ul class="category-list">
+          <li><input type="radio" name="product" id="DJI Air"> DJI Air </li>
+          <li><input type="radio" name="product" id="DJI Avata"> DJI Avata </li>
+          <li><input type="radio" name="product" id="DJI Inspire"> DJI Inspire </li>
+          <li><input type="radio" name="product" id="DJI Mavic"> DJI Mavic </li>
+          <li><input type="radio" name="product" id="DJI Mini"> DJI Mini </li>
+          <li><input type="radio" name="product" id="DJI Power"> DJI Power </li>
+          <li><input type="radio" name="product" id="Osmo Action"> Osmo Action </li>
+          <li><input type="radio" name="product" id="Osmo Mobile"> Osmo Mobile </li>
+          <li><input type="radio" name="product" id="Osmo Pocket">Osmo Pocket</li>
+          <li><input type="radio" name="product" id="Ronin Cinema Cameras">Ronin Cinema Cameras</li>
+          <li><input type="radio" name="product" id="Ronin Stabilizers">Ronin Stabilizers</li>
+      </ul> 
+    </div>
+  </div>
+
+ <div class="container ">
+  <div class="product-grid" >
+      <div class="product-card">
+          <a href="/spct.html">
+            <img src="/img/anh5.jfif" alt="Chân Máy Caplock Mantispod Z">
+          <h4>Chân Máy Caplock Mantispod Z</h4>
+          <p>990.000₫</p>
+          </a>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh2.jpg" alt="DJI Air 3 Series Propeller Guard Cho Air3/Air3s">
+          <h4>DJI Air 3 Series Propeller Guard Cho Air3/Air3s</h4>
+          <p>430.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh2.jpg" alt="DJI Air 3S">
+          <h4>DJI Air 3S</h4>
+          <p>25.000.000₫ - 34.600.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh4.jfif" alt="DJI Mic 2 Mobile Phone Adapter">
+          <h4>DJI Mic 2 Mobile Phone Adapter</h4>
+          <p><span class="original-price">700.000₫</span><span class="discount-price">550.000₫</span></p>
+      </div>
+         
+      
+      <!-- Add more product cards as needed -->
+  </div>
+  <div class="product-grid">
+      <div class="product-card">
+          <img src="/img/anh5.jfif" alt="Chân Máy Caplock Mantispod Z">
+          <h4>Chân Máy Caplock Mantispod Z</h4>
+          <p>990.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh6.jfif" alt="DJI Air 3 Series Propeller Guard Cho Air3/Air3s">
+          <h4>DJI Air 3 Series Propeller Guard Cho Air3/Air3s</h4>
+          <p>430.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh7.jfif" alt="DJI Air 3S">
+          <h4>DJI Air 3S</h4>
+          <p>25.000.000₫ - 34.600.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh8.jfif" alt="DJI Mic 2 Mobile Phone Adapter">
+          <h4>DJI Mic 2 Mobile Phone Adapter</h4>
+          <p><span class="original-price">700.000₫</span><span class="discount-price">550.000₫</span></p>
+      </div>
+         
+      
+      <!-- Add more product cards as needed -->
+  </div>
+  <div class="product-grid">
+      <div class="product-card">
+          <img src="/img/anh9.jfif" alt="Chân Máy Caplock Mantispod Z">
+          <h4>Chân Máy Caplock Mantispod Z</h4>
+          <p>990.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh10.jfif" alt="DJI Air 3 Series Propeller Guard Cho Air3/Air3s">
+          <h4>DJI Air 3 Series Propeller Guard Cho Air3/Air3s</h4>
+          <p>430.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh5.jpg" alt="DJI Air 3S">
+          <h4>DJI Air 3S</h4>
+          <p>25.000.000₫ - 34.600.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh12.jfif" alt="DJI Mic 2 Mobile Phone Adapter">
+          <h4>DJI Mic 2 Mobile Phone Adapter</h4>
+          <p><span class="original-price">700.000₫</span><span class="discount-price">550.000₫</span></p>
+      </div>
+         
+      
+      <!-- Add more product cards as needed -->
+  </div>
+  <div class="product-grid">
+      <div class="product-card">
+          <img src="/img/anh13.webp" alt="Chân Máy Caplock Mantispod Z">
+          <h4>Chân Máy Caplock Mantispod Z</h4>
+          <p>990.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh14.jfif" alt="DJI Air 3 Series Propeller Guard Cho Air3/Air3s">
+          <h4>DJI Air 3 Series Propeller Guard Cho Air3/Air3s</h4>
+          <p>430.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh15.jfif" alt="DJI Air 3S">
+          <h4>DJI Air 3S</h4>
+          <p>25.000.000₫ - 34.600.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh16.jfif" alt="DJI Mic 2 Mobile Phone Adapter">
+          <h4>DJI Mic 2 Mobile Phone Adapter</h4>
+          <p><span class="original-price">700.000₫</span><span class="discount-price">550.000₫</span></p>
+      </div>
+         
+      
+      <!-- Add more product cards as needed -->
+  </div>
+  <div class="product-grid">
+      <div class="product-card">
+          <img src="/img/anh17.jfif" alt="Chân Máy Caplock Mantispod Z">
+          <h4>Chân Máy Caplock Mantispod Z</h4>
+          <p>990.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh18.jfif" alt="DJI Air 3 Series Propeller Guard Cho Air3/Air3s">
+          <h4>DJI Air 3 Series Propeller Guard Cho Air3/Air3s</h4>
+          <p>430.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh19.jfif" alt="DJI Air 3S">
+          <h4>DJI Air 3S</h4>
+          <p>25.000.000₫ - 34.600.000₫</p>
+      </div>
+      <div class="product-card">
+          <img src="/img/anh20.jfif" alt="DJI Mic 2 Mobile Phone Adapter">
+          <h4>DJI Mic 2 Mobile Phone Adapter</h4>
+          <p><span class="original-price">700.000₫</span><span class="discount-price">550.000₫</span></p>
+      </div>
+     
+      
+      <!-- Add more product cards as needed -->
+  </div>
+  <div class="feedback-container">
+      <p>Ban có hài lòng với trải nghiệm tìm kiếm thông tin, sản phẩm trên website không?</p>
+      <div class="feedback-option img">
+          <div >
+              <img alt="Hài lòng"   src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/smiling-face-with-hearts_1f970.png">
+              <span>Hài lòng</span>
+          </div>
+          <div>
+              <img alt="Không hài lòng" src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/disappointed-face_1f61e.png">
+              <span>Không hài lòng</span>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>
+   
+ 
+   <footer class="footer">
+    <section class="features">
+      <div class="container">
+        <div class="feature">
+          <i class="fas fa-shipping-fast"></i>
+          <p>Giao hàng toàn quốc</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-credit-card"></i>
+          <p>Hỗ trợ trả góp nhanh chóng</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-shield-alt"></i>
+          <p>Bảo hành chính hãng</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-store"></i>
+          <p>DJI Store tại Việt Nam</p>
+        </div>
+      </div>
+    </section>
+    <hr>
+    <br>
+    <br>
+    <div class="container">
+      <div class="footer-section">
+        <h3>DJI BY VJO VIETNAM</h3>
+        <p>Địa chỉ: Số 279 Đường Lĩnh Nam, Phường Vĩnh Hưng, Quận Hoàng Mai, TP Hà Nội, Việt Nam</p>
+        <p>Hotline: 0815.000.060</p>
+        <p>DKKD số 0108676636 do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp ngày 29/03/2019</p>
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fas fa-phone"></i>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>SẢN PHẨM</h3>
+        <ul>
+          <li>Flycam</li>
+          <li>Gimbal</li>
+          <li>FPV</li>
+          <li>Phụ kiện flycam</li>
+          <li>Phụ kiện gimbal</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>HỆ THỐNG PHÂN PHỐI SẢN PHẨM</h3>
+        <ul>
+          <li>DJI Store Hà Nội</li>
+          <li>TP. Hồ Chí Minh</li>
+          <li>Đà Nẵng</li>
+          <li>Quảng Ninh</li>
+          <li>Nghệ An</li>
+          <li>Thanh Hóa</li>
+          <li>Đắk Lắk</li>
+          <li>Khánh Hòa</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>ĐĂNG KÍ</h3>
+        <p>Đăng kí để nhận các thông báo về khuyến mãi và các thông tin hữu ích về sản phẩm.</p>
+        <form>
+          <input type="text" placeholder="Tên">
+          <input type="email" placeholder="Email">
+          <input type="text" placeholder="Số điện thoại">
+          <button type="submit">ĐĂNG KÍ</button>
+        </form>
+      </div>
+    </div>
+  </footer>
 
     </body>
 </html>

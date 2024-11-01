@@ -1,344 +1,383 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chi tiết sản phẩm</title>
-    <style>
-      /* Căn toàn bộ giao diện ra giữa */
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-        margin: 0;
-        padding: 20px;
-      }
 
-      /* Container cho hai form */
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px; /* Khoảng cách giữa hai form */
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-      .form-container {
-        flex: 1;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-      }
+<head>
+  <meta charset="UTF-8">
 
-      .product-container {
-        max-width: 800px;
-        display: flex;
-        padding: 20px;
-        gap: 20px;
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
 
-      /* Slideshow */
-      .slideshow-container {
-        position: relative;
-        width: 100%;
-        max-width: 400px;
-        margin: auto;
-      }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang chủ Flycam</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="/static/web/css/style.css">
+</head>
 
-      .carousel {
-        text-align: center;
-      }
 
-      .main-image img {
-        width: 300px; /* Điều chỉnh kích thước tùy ý */
-        border: 2px solid #000; /* Ví dụ để làm nổi bật hình ảnh được chọn */
-      }
 
-      .thumbnails {
-        margin-top: 10px;
-      }
+<!-- Navigation Bar -->
 
-      .thumbnails img {
-        width: 50px;
-        margin: 0 5px;
-        cursor: pointer;
-        opacity: 0.6;
-      }
+<style>
+  /* Căn toàn bộ giao diện ra giữa */
 
-      .thumbnails img.selected {
-        opacity: 1; /* Làm nổi bật hình thu nhỏ được chọn */
-        border: 2px solid #000; /* Tạo viền để dễ nhận biết */
-      }
 
-      /* CSS cho bố cục sản phẩm */
+  /* Container cho hai form */
+  .p-container {
+    display: flex;
+    flex-direction: column;
 
-      /* Ảnh và thông tin chi tiết bên trái */
-      .product-image {
-        width: 60%;
-      }
+    gap: 20px;
+    /* Khoảng cách giữa hai form */
+    background-color: #ffffff;
+    /* padding: 20px; */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
-      .product-image img {
-        width: 100%;
-        border-radius: 8px;
-      }
+  .form-container {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-      .product-info {
-        width: 40%;
-      }
+  .product-container {
+    max-width: 800px;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
-      /* Thông tin giá và khuyến mãi */
-      .price {
-        font-size: 24px;
-        font-weight: bold;
-        color: #ff4d4f;
-        margin: 10px 0;
-      }
+  /* Slideshow */
+  .slideshow-container {
+    width: 100%;
+    max-width: 25rem;
+    /* Thay đổi thành rem */
+    margin: auto;
+  }
 
-      .discount {
-        color: gray;
-        text-decoration: line-through;
-        margin-right: 10px;
-      }
+  .carousel {
+    text-align: center;
+  }
 
-      .promo-info {
-        font-size: 14px;
-        color: #777;
-        margin-top: 10px;
-      }
+  .main-image img {
+    width: 100%;
+    max-width: 20rem;
+    border: 2px solid #000;
+  }
 
-      /* Các nút tương tác */
-      .buttons {
-        display: flex;
-        gap: 10px;
-        margin-top: 20px;
-      }
+  .thumbnails {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+  }
 
-      .buttons button {
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 5px;
-        border: none;
-      }
+  .thumbnails img {
+    width: 50px;
+    margin: 0 5px;
+    cursor: pointer;
+    opacity: 0.6;
+  }
 
-      .add-to-cart {
-        background-color: #ff9f00;
-        color: white;
-      }
+  .thumbnails img.selected {
+    opacity: 1;
+    /* Làm nổi bật hình thu nhỏ được chọn */
+    border: 2px solid #000;
+    /* Tạo viền để dễ nhận biết */
+  }
 
-      .buy-now {
-        background-color: #ff4d4f;
-        color: white;
-      }
+  /* CSS cho bố cục sản phẩm */
 
-      .commitments-form {
-        width: 100%;
-        max-width: 500px;
-        background-color: #f9f9f9;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
+  /* Ảnh và thông tin chi tiết bên trái */
+  .product-image {
+    width: 60%;
+  }
 
-      .commitments-form h4 {
-        font-size: 22px;
-        font-weight: bold;
-        margin-bottom: 20px;
-      }
+  .product-image img {
+    width: 100%;
+    border-radius: 8px;
+  }
 
-      .commitment-item {
-        font-size: 16px;
-        line-height: 1.5;
-        margin-top: 10px;
-      }
+  .product-info {
+    width: 40%;
+  }
 
-      /* CSS cho form thứ hai */
-      .second-form {
-        width: 100%;
-        max-width: 500px;
-        background-color: #e9e9e9;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
+  /* Thông tin giá và khuyến mãi */
+  .price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff4d4f;
+    margin: 10px 0;
+  }
 
-      .second-form h4 {
-        font-size: 22px;
-        font-weight: bold;
-        margin-bottom: 20px;
-      }
+  .discount {
+    color: gray;
+    text-decoration: line-through;
+    margin-right: 10px;
+  }
 
-      .second-form .form-item {
-        font-size: 16px;
-        line-height: 1.5;
-        margin-top: 10px;
-      }
-      .product-section {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
+  .promo-info {
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+  }
 
-      .product-section h2 {
-        font-size: 20px;
-        margin-bottom: 10px;
-      }
+  /* Các nút tương tác */
+  .buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
 
-      .product-container {
-        display: flex;
-        gap: 20px;
-        overflow-x: auto;
-        padding: 10px 0;
-      }
+  .buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+  }
 
-      .product-card {
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        width: 700px;
-        /* height: 50px; */
-        flex-shrink: 0;
-        text-align: center;
-      }
+  .add-to-cart {
+    background-color: #ff9f00;
+    color: white;
+  }
 
-      .product-card img {
-        width: 50%;
-        height: auto;
-        border-radius: 8px;
-        margin-bottom: 10px;
-      }
+  .buy-now {
+    background-color: #ff4d4f;
+    color: white;
+  }
 
-      .product-card h3 {
-        font-size: 16px;
-        margin: 10px 0;
-      }
+  .commitments-form {
+    width: 100%;
+    max-width: 500px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 
-      .product-card .price {
-        font-size: 18px;
-        color: #ff0000;
-      }
+  .commitments-form h4 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
 
-      .product-card .discounted {
-        text-decoration: line-through;
-        color: #999999;
-        font-size: 14px;
-      }
+  .commitment-item {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
 
-      .product-card .rating {
-        font-size: 14px;
-        color: #ffcc00;
-      }
-    </style>
-  </head>
-  <body class="container">
-    <div class="form-container">
-      <!-- Container cho chi tiết sản phẩm -->
-      <div class="product-container">
-        <!-- Hình ảnh sản phẩm -->
-        <div class="carousel">
-          <div class="main-image">
-            <img src="/img/anh1.jpg" alt="Hình ảnh được chọn" />
-          </div>
-          <div class="thumbnails">
-            <img src="/img/anh1.jpg" alt="Hình thu nhỏ 1" />
-            <img src="/img/anh3.jpg" class="selected" alt="Hình thu nhỏ 2" />
-            <img src="/img/anh4.jfif" alt="Hình thu nhỏ 3" />
-          </div>
+  /* CSS cho form thứ hai */
+  .second-form {
+    width: 100%;
+    max-width: 500px;
+    background-color: #e9e9e9;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .second-form h4 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .second-form .form-item {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+
+  /* .product-section {
+      max-width: 1200px;
+      margin: 0 auto;
+    } */
+
+  .product-section h2 {
+    font-size: 20px;
+    /* margin-bottom: 10px; */
+  }
+
+  .product-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0;
+
+  }
+
+  .product-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    padding: 20px;
+    width: 1200px;
+    margin-left: 100px;
+    /* height: 50px; */
+    /* flex-shrink: 0; */
+    text-align: center;
+  }
+
+  .product-card img {
+    width: 50%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .product-card h3 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+
+  .product-card .price {
+    font-size: 18px;
+    color: #ff0000;
+  }
+
+  .product-card .discounted {
+    text-decoration: line-through;
+    color: #999999;
+    font-size: 14px;
+    align-items: center;
+  }
+
+  .product-card .rating {
+    font-size: 14px;
+    color: #ffcc00;
+  }
+</style>
+
+<body class="p-container">
+
+  <header class="header">
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="/trang-chu.html"><img src="img/Logo1.jpg" alt="DJI Logo"></a>
         </div>
-        <div class="product-info">
-          <h2>Camera IP 360 Độ 2MP Ezviz C6N</h2>
-          <div class="price">
-            <span class="discount">550.000₫</span> 370.000₫
-          </div>
-          <div class="promo-info">
-            <p>
-              Trả chậm theo sản phẩm hoặc giỏ hàng, kì hạn 1-3 tháng, lãi suất
-              0% qua HomePayLater.
-            </p>
-            <p>
-              Nhập mã VNPAYTGDD4 giảm từ 50.000đ đến 100.000đ (áp dụng tùy giá
-              trị đơn hàng) khi thanh toán qua VNPAY-QR.
-            </p>
-          </div>
-
-          <!-- Các nút tương tác -->
-          <div class="buttons">
-           <a href="/gio-hang.html"> <button class="add-to-cart">Thêm vào giỏ</button></a>
-           <a href="/thanh-toan.html"> <button class="buy-now">Mua ngay</button></a>
-          </div>
-      </div>
-      
-      </div>
-      <div class="product-container">
-        <!-- Product Image Section -->
-
-        <!-- Commitment Form Below the Image -->
-        <form class="commitments-form">
-          <div class="commitments">
-            <h4>cửa hàng cam kết</h4>
-            <div class="div_left">
-              <!-- <img alt="Icon 1" src="icon1.png"> -->
-              <span>Bảo hành có cam kết 12 tháng</span>
-            </div>
-            <div class="div_right">
-              <span
-                >Trong hộp có: Sách hướng dẫn, <br />Mẫu khoan, Dây cáp, Chân
-                đế, Camera,<br />
-                Bộ đinh vít, Bộ chuyển đổi nguồn DC, Adapter</span
-              >
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-card .discounted">
-        <h2 class="product-section h2">Sản phẩm thường mua cùng</h2>
-        <div class="product-container">
-          <div class="product-section">
-            <img alt="Thẻ nhớ Kioxia 128GB" src="/img/anh1.jpg" />
-            <h3>DJI Air 3S</h3>
-            <p>300.000đ <span>500.000đ</span> -40%</p>
-            <p class="product-card .rating">⭐ 4.4 (5)</p>
-          </div>
-          <div>
-            <img alt="Sạc 2 cổng Xmobile DS476" src="/img/anh2.jpg" />
-            <h3>Chân Máy Caplock Mantispod Z</h3>
-            <p>125.000đ <span>250.000đ</span> -50%</p>
-            <p class="product-card .rating">⭐ 4.5 (10)</p>
-          </div>
-          <div>
-            <img alt="Thẻ nhớ Kioxia 64GB" src="/img/anh3.jpg" />
-            <h3>DJI Mic 2 Mobile Phone Adapter</h3>
-            <p>190.000đ <span>280.000đ</span> -32%</p>
-            <p class="product-card .rating">⭐ 4.7 (16)</p>
-          </div>
-          <div>
-            <img alt="Sạc Mophie" src="/img/anh13.webp" />
-            <h3>Chân Máy Caplock Mantispod Z</h3>
-            <p>90.000đ <span>150.000đ</span> -40%</p>
-            <p class="product-card .rating">⭐ 4.3 (71)</p>
-          </div>
-          <div>
-            <img alt="Thẻ nhớ Kioxia 64GB" src="/img/anh20.jpg" />
-            <h3>DJI Air 3S1</h3>
-            <p>140.000đ <span>200.000đ</span> -30%</p>
-            <p class="product-card .rating">⭐ 4.6 (20)</p>
-          </div>
+        <ul class="menu">
+          <li><a href="/gioi-thieu.html">Giới Thiệu</a></li>
+          <li><a href="/san-pham.html">Sản Phẩm</a></li>
+          <li><a href="/huong-dan-mua-hang.html">Hướng Dẫn Mua Hàng</a></li>
+          <li><a href="/bao-hanh.html">Dịch Vụ Bảo Hành</a></li>
+          <li><a href="/tin-tuc.html">Tin Tức</a></li>
+          <li><a href="/lien-he.html">Liên Hệ</a></li>
+        </ul>
+        <div class="search-cart">
+          <input type="text" placeholder="Tìm kiếm">
+          <i class="fas fa-search"></i>
+          <a href="/gio-hang.html"><i class="fas fa-shopping-cart"></i></a>
         </div>
       </div>
+    </nav>
+
+    <!-- Product Category Section -->
+
+  </header>
+
+  <div class="form-container">
+    <!-- Container cho chi tiết sản phẩm -->
+    <div class="product-container">
+      <!-- Hình ảnh sản phẩm -->
+      <div class="carousel">
+        <div class="main-image">
+          <img src="/img/anh1.jpg" alt="Hình ảnh được chọn" />
+        </div>
+        <div class="thumbnails">
+          <img src="/img/anh1.jpg" alt="Hình thu nhỏ 1" />
+          <img src="/img/anh3.jpg" class="selected" alt="Hình thu nhỏ 2" />
+          <img src="/img/anh4.jfif" alt="Hình thu nhỏ 3" />
+        </div>
+      </div>
+      <div class="product-info">
+        <h2>Camera IP 360 Độ 2MP Ezviz C6N</h2>
+        <div class="price">
+          <span class="discount">550.000₫</span> 370.000₫
+        </div>
+        <div class="promo-info">
+          <p>
+            Trả chậm theo sản phẩm hoặc giỏ hàng, kì hạn 1-3 tháng, lãi suất
+            0% qua HomePayLater.
+          </p>
+          <p>
+            Nhập mã VNPAYTGDD4 giảm từ 50.000đ đến 100.000đ (áp dụng tùy giá
+            trị đơn hàng) khi thanh toán qua VNPAY-QR.
+          </p>
+        </div>
+
+        <!-- Các nút tương tác -->
+        <div class="buttons">
+          <a href="/gio-hang.html"> <button class="add-to-cart">Thêm vào giỏ</button></a>
+          <a href="/thanh-toan.html"> <button class="buy-now">Mua ngay</button></a>
+        </div>
+      </div>
+
     </div>
-  </body>
+    <div class="product-container">
+      <!-- Product Image Section -->
+
+      <!-- Commitment Form Below the Image -->
+      <form class="commitments-form">
+        <div class="commitments">
+          <h4>Cửa hàng cam kết</h4>
+          <div class="div_left">
+            <!-- <img alt="Icon 1" src="icon1.png"> -->
+            <span>Bảo hành có cam kết 12 tháng</span>
+          </div>
+          <div class="div_right">
+            <span>Trong hộp có: Sách hướng dẫn, <br />Mẫu khoan, Dây cáp, Chân
+              đế, Camera,<br />
+              Bộ đinh vít, Bộ chuyển đổi nguồn DC, Adapter</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="product-card">
+    <div class="product-card .discounted">
+      <h2 class="product-section h2">Sản phẩm thường mua cùng</h2>
+      <div class="product-container">
+        <div class="product-section">
+          <img alt="Thẻ nhớ Kioxia 128GB" src="/img/anh1.jpg" />
+          <h3>DJI Air 3S</h3>
+          <p>300.000đ <span>500.000đ</span> -40%</p>
+          <p class="product-card .rating">⭐ 4.4 (5)</p>
+        </div>
+        <div>
+          <img alt="Sạc 2 cổng Xmobile DS476" src="/img/anh2.jpg" />
+          <h3>Chân Máy Caplock Mantispod Z</h3>
+          <p>125.000đ <span>250.000đ</span> -50%</p>
+          <p class="product-card .rating">⭐ 4.5 (10)</p>
+        </div>
+        <div>
+          <img alt="Thẻ nhớ Kioxia 64GB" src="/img/anh3.jpg" />
+          <h3>DJI Mic 2 Mobile Phone Adapter</h3>
+          <p>190.000đ <span>280.000đ</span> -32%</p>
+          <p class="product-card .rating">⭐ 4.7 (16)</p>
+        </div>
+        <div>
+          <img alt="Sạc Mophie" src="/img/anh13.webp" />
+          <h3>Chân Máy Caplock Mantispod Z</h3>
+          <p>90.000đ <span>150.000đ</span> -40%</p>
+          <p class="product-card .rating">⭐ 4.3 (71)</p>
+        </div>
+        <div>
+          <img alt="Thẻ nhớ Kioxia 64GB" src="/img/anh20.jpg" />
+          <h3>DJI Air 3S1</h3>
+          <p>140.000đ <span>200.000đ</span> -30%</p>
+          <p class="product-card .rating">⭐ 4.6 (20)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>

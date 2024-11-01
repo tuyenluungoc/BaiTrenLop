@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Bán Hàng</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">DJI FLYCAM</div>
+        <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+        <div class="header-icons">
+            <div class="notifications">🔔</div>
+            <div class="user-avatar">👤</div> 
+        </div>
+    </header>
+    <button class="menu-toggle">☰</button>
+
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+        <nav class="menu">
+            <a href="/thong-ke.html">Trang Chủ</a>
+            <a href="/ql-don-hang.html">Quản Lý Đơn Hàng</a>
+            <a href="/ql-san-pham.html">Quản Lý Sản Phẩm</a>
+            <a href="/ql-khach-hang.html">Quản Lý Khách Hàng</a>
+            <a href="/thong-ke.html">Thống Kê và Báo Cáo</a>
+            
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>Tổng Quan Bán Hàng</h1>
+        <section class="dashboard">
+            <div class="dashboard-item">Doanh Thu Hôm Nay</div>
+            <div class="dashboard-item">Số Đơn Hàng</div>
+            <div class="dashboard-item">Sản Phẩm Đã Bán</div>
+        </section>
+
+        <section class="latest-orders">
+            <h2>Đơn Hàng Mới Nhất</h2>
+            <!-- Thêm danh sách đơn hàng -->
+        </section>
+
+        <section class="top-products">
+            <h2>Sản Phẩm Bán Chạy</h2>
+            <!-- Thêm danh sách sản phẩm bán chạy -->
+        </section>
+    </main>
+    <script>
+        // JavaScript để điều khiển mở/đóng sidebar
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

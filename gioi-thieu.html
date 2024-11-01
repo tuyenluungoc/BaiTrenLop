@@ -1,292 +1,205 @@
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
+    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới Thiệu - DJI Vietnam</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        /* Header */
-        .header {
-            background-color: #4342;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .header h1 {
-            margin: 0;
-        }
-
-        /* Navigation */
-        .nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-            padding: 10px 0;
-        }
-
-        .nav a {
-            color: white;
-            padding: 15px 20px;
-            text-transform: uppercase;
-            text-decoration: none;
-        }
-
-        .nav a:hover {
-            background-color: #555;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            background-image: url('https://example.com/hero-image.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 400px;
-            color: white;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero h2 {
-            font-size: 48px;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 5px;
-        }
-
-        /* About Section */
-        .about-section {
-            width: 80%;
-            margin: 50px auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-section h2 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .about-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .about-content .text {
-            width: 60%;
-        }
-
-        .about-content img {
-            width: 35%;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-content p {
-            line-height: 1.8;
-            color: #555;
-        }
-
-        /* Core Values Section */
-        .core-values {
-            width: 80%;
-            margin: 50px auto;
-            text-align: center;
-        }
-
-        .core-values h3 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .core-values .value-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .value-item {
-            width: 30%;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .value-item img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-        }
-
-        .value-item p {
-            color: #555;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .footer p {
-            margin: 0;
-        }
-
-        .footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Giới thiệu</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/static/web/css/style.css">
 </head>
+<style>
+  
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    /* Hero Section */
+    .hero {
+        color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+        background: url('https://www.winwinstore.vn/wp-content/uploads/2021/04/Drone-DJI-Air-2S-5.jpeg') center center/cover no-repeat;
+    }
+
+    /* About Section */
+    .about-section {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+    }
+
+
+    /* Responsive styling */
+    @media (max-width: 768px) {
+        .about-section .row {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .about-section .col-md-5 img {
+            width: 100%;
+        }
+    }
+</style>
 <body>
 
-<!-- Header -->
-<div class="header">
-    <div class="col"></div>
-    <div class="col-6">DJI Việt Nam - Đại lý ủy quyền chính thức của DJI tại Việt Nam</div>
-    <div class="col-6"></div>
-</div>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="/trang-chu.html"><img src="img/Logo1.jpg" alt="DJI Logo"></a>
+                </div>
+                <ul class="menu">
+                    <li><a href="/gioi-thieu.html">Giới Thiệu</a></li>
+                    <li><a href="/san-pham.html">Sản Phẩm</a></li>
+                    <li><a href="/huong-dan-mua-hang.html">Hướng Dẫn Mua Hàng</a></li>
+                    <li><a href="/bao-hanh.html">Dịch Vụ Bảo Hành</a></li>
+                    <li><a href="/tin-tuc.html">Tin Tức</a></li>
+                    <li><a href="/lien-he.html">Liên Hệ</a></li>
+                </ul>
+                <div class="search-cart">
+                    <input type="text" placeholder="Tìm kiếm">
+                    <i class="fas fa-search"></i>
+                    <a href="/gio-hang.html"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Product Category Section -->
+       
+    </header>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Giới Thiệu</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Hướng Dẫn Mua Hàng</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Dịch Vụ Bảo Hành</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Sản Phẩm
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">DJI Mavic </a></li>
-                        <li><a class="dropdown-item" href="#">DJI Mini</a></li>
-                        <li><a class="dropdown-item" href="#">DJI Air</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Tin Tức </a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h2>Khám Phá Thế Giới DJI</h2>
     </div>
-</nav>
 
-<!-- Hero Section -->
-<div class="container">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://www.winwinstore.vn/wp-content/uploads/2021/04/Drone-DJI-Air-2S-5.jpeg"
-                     class="d-block"
-                     style="width: 1300px; height: 500px ;" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="https://tokyocamera.vn/wp-content/uploads/2021/11/DJI-Mavic-3-Cine-DroneDJ-Featured-Image.jpeg"
-                     class="d-block"
-                     style="width: 1300px; height: 500px;" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="https://tokyocamera.vn/wp-content/uploads/2023/07/Ra-mat-DJI-Air-3-1-1200x675.jpg"
-                     class="d-block"
-                     style="width: 1300px; height: 500px;" alt="...">
+    <!-- About Section -->
+    <div class="container">
+        <div class="about-section">
+            <h2 class="text-center">Về Chúng Tôi</h2>
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <p>DJI là công ty công nghệ hàng đầu thế giới về thiết bị bay không người lái (drone), chuyên cung cấp các sản phẩm và giải pháp tiên tiến.</p>
+                </div>
+                <div class="col-md-5">
+<img src="https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-4-764x400.jpg" class="img-fluid rounded shadow" alt="DJI Store Image">
+                </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
 
-</div>
-
-<!-- About Section -->
-<div class="about-section">
-<p style="text-align: justify;"><em>Sáng tạo là khởi nguồn của mọi ước mơ. Mọi ý tưởng, mọi bước đột phá đều có thể thực hiện được nếu chúng ta dám tự tin sáng tạo. Tại DJI-Việt Nam, chúng tôi cung cấp cho bạn những thiết bị công nghệ cần thiết để hiện thực hóa những ý tưởng. Được thành lập vào năm 2020, DJI Việt Nam trở thành hệ thống cửa hàng của VJO chuyên phân phối các sản phẩm DJI chính hãng tại Việt Nam.</em></p>
-    <img loading="lazy" decoding="async" class="aligncenter wp-image-3299" src="https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-5-1-738x400.jpg" alt="Cửa hàng DJI Việt Nam" width="600" height="325" srcset="https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-5-1-738x400.jpg 738w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-5-1-1400x758.jpg 1400w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-5-1-768x416.jpg 768w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-5-1-1536x832.jpg 1536w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-5-1-10x5.jpg 10w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-5-1-36x20.jpg 36w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-5-1-48x26.jpg 48w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-5-1-510x276.jpg 510w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-5-1.jpg 2047w" sizes="(max-width: 600px) 100vw, 600px">
-</div>
-    <div class="about-section">
-    <h2>Về Chúng Tôi</h2>
-    <div class="about-content">
-        <div class="text">
-            <p>DJI là công ty công nghệ hàng đầu thế giới về thiết bị bay không người lái (drone), chuyên cung cấp các sản phẩm và giải pháp tiên tiến. Tại Việt Nam, DJI mang đến những sản phẩm hiện đại giúp người dùng tận dụng tối đa công nghệ trong nhiều lĩnh vực như quay phim, nhiếp ảnh, và cả khảo sát công trình.</p>
-            <p>Với đội ngũ chuyên nghiệp và đầy kinh nghiệm, DJI Việt Nam cam kết mang đến sự hài lòng và chất lượng vượt trội cho từng sản phẩm cũng như dịch vụ mà chúng tôi cung cấp.</p>
-        </div>
-        <img loading="lazy" decoding="async" class="aligncenter wp-image-3301" src="https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-4-764x400.jpg" alt="Cửa hàng DJI Việt Nam" width="600" height="314" srcset="https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-4-764x400.jpg 764w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-4-1400x733.jpg 1400w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-4-768x402.jpg 768w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-4-1536x804.jpg 1536w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-4-10x5.jpg 10w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-4-36x19.jpg 36w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-4-48x25.jpg 48w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-4-510x267.jpg 510w, https://dji-vietnam.vn/wp-content/uploads/2021/01/gioi-thieu-dji-4.jpg 2045w" sizes="(max-width: 600px) 100vw, 600px">
-    </div>
-</div>
-
-<!-- Core Values Section -->
-<div class="core-values">
-    <h3>Giá Trị Cốt Lõi</h3>
-    <div class="value-grid">
-        <div class="value-item">
-            <h4>Đổi Mới</h4>
-            <p>Chúng tôi luôn tìm kiếm những giải pháp công nghệ mới để mang lại giá trị tốt nhất cho khách hàng.</p>
-        </div>
-        <div class="value-item">
-            <h4>Chất Lượng</h4>
-            <p>Sản phẩm của chúng tôi được chế tạo từ những vật liệu cao cấp, đáp ứng những tiêu chuẩn khắt khe nhất.</p>
-        </div>
-        <div class="value-item">
-            <h4>Tập Trung Vào Khách Hàng</h4>
-            <p>Khách hàng là trọng tâm của mọi hoạt động, chúng tôi cam kết mang đến trải nghiệm tốt nhất.</p>
+    <!-- Core Values Section -->
+    <div class="container mt-5 core-values">
+        <h3 class="text-center">Giá Trị Cốt Lõi</h3>
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="p-4 rounded shadow bg-light">
+                    <h4>Đổi Mới</h4>
+                    <p>Chúng tôi luôn tìm kiếm những giải pháp công nghệ mới để mang lại giá trị tốt nhất cho khách hàng.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="p-4 rounded shadow bg-light">
+                    <h4>Chất Lượng</h4>
+                    <p>Sản phẩm của chúng tôi được chế tạo từ những vật liệu cao cấp, đáp ứng những tiêu chuẩn khắt khe nhất.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="p-4 rounded shadow bg-light">
+                    <h4>Tập Trung Vào Khách Hàng</h4>
+                    <p>Khách hàng là trọng tâm của mọi hoạt động, chúng tôi cam kết mang đến trải nghiệm tốt nhất.</p>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Footer -->
-<div class="footer">
-    <p>© 2024 DJI Vietnam. All Rights Reserved.</p>
-    <p>
-        <a href="#">Chính Sách Bảo Mật</a> |
-        <a href="#">Điều Khoản Sử Dụng</a> |
-        <a href="#">Liên Hệ</a>
-    </p>
-</div>
+ 
+  <footer class="footer">
+      <section class="features">
+        <div class="container">
+          <div class="feature">
+            <i class="fas fa-shipping-fast"></i>
+            <p>Giao hàng toàn quốc</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-credit-card"></i>
+            <p>Hỗ trợ trả góp nhanh chóng</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-shield-alt"></i>
+            <p>Bảo hành chính hãng</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-store"></i>
+            <p>DJI Store tại Việt Nam</p>
+          </div>
+        </div>
+      </section>
+      <hr>
+      <br>
+      <br>
+      <div class="container">
+        <div class="footer-section">
+          <h3>DJI BY VJO VIETNAM</h3>
+          <p>Địa chỉ: Số 279 Đường Lĩnh Nam, Phường Vĩnh Hưng, Quận Hoàng Mai, TP Hà Nội, Việt Nam</p>
+          <p>Hotline: 0815.000.060</p>
+          <p>DKKD số 0108676636 do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp ngày 29/03/2019</p>
+          <div class="social-icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fas fa-phone"></i>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>SẢN PHẨM</h3>
+          <ul>
+            <li>Flycam</li>
+            <li>Gimbal</li>
+            <li>FPV</li>
+            <li>Phụ kiện flycam</li>
+            <li>Phụ kiện gimbal</li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>HỆ THỐNG PHÂN PHỐI SẢN PHẨM</h3>
+          <ul>
+            <li>DJI Store Hà Nội</li>
+            <li>TP. Hồ Chí Minh</li>
+            <li>Đà Nẵng</li>
+            <li>Quảng Ninh</li>
+            <li>Nghệ An</li>
+            <li>Thanh Hóa</li>
+            <li>Đắk Lắk</li>
+            <li>Khánh Hòa</li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>ĐĂNG KÍ</h3>
+          <p>Đăng kí để nhận các thông báo về khuyến mãi và các thông tin hữu ích về sản phẩm.</p>
+          <form>
+            <input type="text" placeholder="Tên">
+            <input type="email" placeholder="Email">
+            <input type="text" placeholder="Số điện thoại">
+            <button type="submit">ĐĂNG KÍ</button>
+          </form>
+        </div>
+      </div>
+    </footer>
 
 </body>
-</html>
 
+</html>

@@ -1,75 +1,104 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông tin sản phẩm và bảo hành</title>
-    <style>
-        /* Card CSS */
-       
-        /* Accordion CSS */
-        .accordion {
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
-            font-family: Arial, sans-serif;
-        }
+    <head>
+        <meta charset="UTF-8">
+      
+      
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bảo Hành</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="/static/web/css/style.css">
+      </head>
+      
 
-        .accordion-item {
-            border-top: 1px solid #ddd;
-        }
+<style>
+    /* Card CSS */
+   
+    /* Accordion CSS */
+    .accordion {
+        width: 80%;
+        max-width: 800px;
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+    }
 
-        .accordion-header {
-            width: 100%;
-            padding: 15px;
-            font-size: 18px;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            background-color: #f1f1f1;
-            border: none;
-            cursor: pointer;
-            outline: none;
-            transition: background-color 0.3s ease;
-        }
+    .accordion-item {
+        border-top: 1px solid #ddd;
+    }
 
-        .accordion-header:hover {
-            background-color: #e0e0e0;
-        }
+    .accordion-header {
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        background-color: #f1f1f1;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        transition: background-color 0.3s ease;
+    }
 
-        .accordion-icon {
-            font-size: 14px;
-            transition: transform 0.3s ease;
-        }
+    .accordion-header:hover {
+        background-color: #e0e0e0;
+    }
 
-        .accordion-content {
-            display: none;
-            padding: 15px;
-            background-color: #ffffff;
-            text-align: left;
-            border-top: 1px solid #ddd;
-        }
+    .accordion-icon {
+        font-size: 14px;
+        transition: transform 0.3s ease;
+    }
 
-        .accordion-item.active .accordion-content {
-            display: block;
-        }
+    .accordion-content {
+        display: none;
+        padding: 15px;
+        background-color: #ffffff;
+        text-align: left;
+        border-top: 1px solid #ddd;
+    }
 
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-        }
-        img{
-            width: 60px;
-            height: 60px;
-        }
-    </style>
-</head>
+    .accordion-item.active .accordion-content {
+        display: block;
+    }
+
+    .accordion-item.active .accordion-icon {
+        transform: rotate(180deg);
+    }
+    img{
+        width: 60px;
+        height: 60px;
+    }
+</style>
 <body>
 
-<!-- Card Section -->
-
-
-<!-- Accordion Section -->
- <img src="img/logo.jpg" alt="">
+    <header class="header">
+        <nav class="navbar">
+          <div class="container">
+            <div class="logo">
+              <a href="/trang-chu.html"><img src="img/Logo1.jpg" alt="DJI Logo"></a>
+            </div>
+            <ul class="menu">
+              <li><a href="/gioi-thieu.html">Giới Thiệu</a></li>
+              <li><a href="/san-pham.html">Sản Phẩm</a></li>
+              <li><a href="/huong-dan-mua-hang.html">Hướng Dẫn Mua Hàng</a></li>
+              <li><a href="/bao-hanh.html">Dịch Vụ Bảo Hành</a></li>
+              <li><a href="/tin-tuc.html">Tin Tức</a></li>
+              <li><a href="/lien-he.html">Liên Hệ</a></li>
+            </ul>
+            <div class="search-cart">
+              <input type="text" placeholder="Tìm kiếm">
+              <i class="fas fa-search"></i>
+              <a href="/gio-hang.html"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+          </div>
+        </nav>
+  
+        <!-- Product Category Section -->
+  
+      </header>
+ <!-- <img src="img/logo.jpg" alt=""> -->
 <div class="accordion">
     <div class="accordion-item">
         <button class="accordion-header">
@@ -127,6 +156,78 @@
         </div>
     </div>
 </div>
+<footer class="footer">
+    <section class="features">
+        <div class="container">
+            <div class="feature">
+                <i class="fas fa-shipping-fast"></i>
+                <p>Giao hàng toàn quốc</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-credit-card"></i>
+                <p>Hỗ trợ trả góp nhanh chóng</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-shield-alt"></i>
+                <p>Bảo hành chính hãng</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-store"></i>
+                <p>DJI Store tại Việt Nam</p>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <br>
+    <br>
+    <div class="container">
+        <div class="footer-section">
+            <h3>DJI BY VJO VIETNAM</h3>
+            <p>Địa chỉ: Số 279 Đường Lĩnh Nam, Phường Vĩnh Hưng, Quận Hoàng Mai, TP Hà Nội, Việt Nam</p>
+            <p>Hotline: 0815.000.060</p>
+            <p>DKKD số 0108676636 do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp ngày 29/03/2019</p>
+            <div class="social-icons">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fas fa-phone"></i>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>SẢN PHẨM</h3>
+            <ul>
+                <li>Flycam</li>
+                <li>Gimbal</li>
+                <li>FPV</li>
+                <li>Phụ kiện flycam</li>
+                <li>Phụ kiện gimbal</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>HỆ THỐNG PHÂN PHỐI SẢN PHẨM</h3>
+            <ul>
+                <li>DJI Store Hà Nội</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>Đà Nẵng</li>
+                <li>Quảng Ninh</li>
+                <li>Nghệ An</li>
+                <li>Thanh Hóa</li>
+                <li>Đắk Lắk</li>
+                <li>Khánh Hòa</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>ĐĂNG KÍ</h3>
+            <p>Đăng kí để nhận các thông báo về khuyến mãi và các thông tin hữu ích về sản phẩm.</p>
+            <form>
+                <input type="text" placeholder="Tên">
+                <input type="email" placeholder="Email">
+                <input type="text" placeholder="Số điện thoại">
+                <button type="submit">ĐĂNG KÍ</button>
+            </form>
+        </div>
+    </div>
+</footer>
 
 <script>
     // Accordion JavaScript

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập nhật bài viết</title>
+    <link rel="stylesheet" href="path/to/your/styles.css"> <!-- Thay đổi đường dẫn đến CSS của bạn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"> <!-- Để sử dụng biểu tượng Font Awesome -->
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+
+    <!-- Content Header (Page header) -->
+    <header class="header">
+        <div class="logo">DJI FLYCAM</div>
+        <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+        <div class="header-icons">
+            <div class="notifications">🔔</div>
+            <div class="user-avatar">👤</div> 
+        </div>
+    </header>
+    <button class="menu-toggle">☰</button>
+
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+        <nav class="menu">
+            <a href="/thong-ke.html">Trang Chủ</a>
+            <a href="/ql-don-hang.html">Quản Lý Đơn Hàng</a>
+            <a href="/ql-san-pham.html">Quản Lý Sản Phẩm</a>
+            <a href="/ql-khach-hang.html">Quản Lý Khách Hàng</a>
+            <a href="/thong-ke.html">Thống Kê và Báo Cáo</a>
+            <a href="/ql-baiviet.html">Danh sách bài Viết</a>
+        </nav>
+    </aside>
+    <!-- Main content -->
+    <section class="main-content">
+        <div class="container-fluid">
+            <div class="row py-2">
+                <div class="col-6">
+                    <a href="ql-baiviet.html" type="button" class="btn btn-default">
+                        <i class="fa fa-chevron-left"></i> Quay lại
+                    </a>
+                    <button type="button" class="btn btn-info px-4" id="btn-update">
+                        Cập nhật
+                    </button>
+                </div>
+
+                <div class="col-6 d-flex justify-content-end">
+                    <button type="button" class="btn btn-danger px-4" id="btn-delete">
+                        Xóa
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="form-update-blog">
+                                <div class="row">
+                                    <div class="col-md-8">
+
+                                        <div class="form-group">
+                                            <label for="title">Tiêu đề</label>
+                                            <input type="text" class="form-control" id="title" name="title" value="dji mini 3 pro"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="content">Nội dung</label>
+                                            <textarea id="content" class="form-control" rows="3" name="content">DJI Air 3S sở hữu cụm camera kép đỉnh cao với camera chính sử dụng cảm biến 1 inch hứa hẹn sẽ đem đến chất lượng hình ảnh siêu sắc nét, bất kể bạn đang sử dụng chiếc flycam này để quay phong cảnh, chân dung,…
+
+                                                Camera chính sử dụng cảm biến CMOS 1 inch 50MP
+                                                Được trang bị LiDAR hướng về phía trước
+                                                Khả năng quay 4K/60fps HDR hoặc 4K/120fps
+                                                Thời gian bay lên tới 45 phút
+                                                Cảm biến vật cản đa hướng
+                                                Trọng lượng 724g
+                                                Bộ nhớ trong 42GB
+                                                Truyền video DJI O4 | 1080p/60fps 10bit
+                                                Tương thích với DJI Cellular Dongle 2
+                                                Tính năng ActiveTrack 360°</textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="description">Mô tả ngắn</label>
+                                            <textarea id="description" class="form-control" rows="3" name="description">DJI Air 3S sở hữu cụm camera kép đỉnh cao với camera chính sử dụng cảm biến 1 inch hứa hẹn sẽ đem đến chất lượng hình ảnh siêu sắc nét, bất kể bạn đang sử dụng chiếc flycam này để quay phong cảnh, chân dung,…
+
+                                                Camera chính sử dụng cảm biến CMOS 1 inch 50MP
+                                                Được trang bị LiDAR hướng về phía trước
+                                                Khả năng quay 4K/60fps HDR hoặc 4K/120fps
+                                                Thời gian bay lên tới 45 phút
+                                                Cảm biến vật cản đa hướng
+                                                Trọng lượng 724g
+                                                Bộ nhớ trong 42GB
+                                                Truyền video DJI O4 | 1080p/60fps 10bit
+                                                Tương thích với DJI Cellular Dongle 2
+                                                Tính năng ActiveTrack 360°</textarea>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="status">Trạng thái</label>
+                                            <select id="status" class="form-control" name="status">
+                                                <option value="false">Nháp</option>
+                                                <option value="true" selected>Công khai</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="image-preview-container mb-3">
+                                                <img src="/img/anh5.jpg" alt="" id="image-preview" style="max-width: 100%;">
+                                            </div>
+                                            <label for="image" class="btn btn-info btn-flat rounded">
+                                                Chọn hình ảnh
+                                            </label>
+                                            <input type="file" id="image" class="d-none">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Bạn có thể thêm các xử lý sự kiện cho nút "Cập nhật" và "Xóa" tại đây
+    $('#btn-update').on('click', function() {
+        // Xử lý cập nhật bài viết
+        alert('Bài viết đã được cập nhật!');
+    });
+
+    $('#btn-delete').on('click', function() {
+        // Xử lý xóa bài viết
+        alert('Bài viết đã bị xóa!');
+    });
+</script>
+</body>
+</html>

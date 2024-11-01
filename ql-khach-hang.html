@@ -1,171 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý khách hàng</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Quản Lý Khách Hàng - Fly Cam</title>
+    <link rel="stylesheet" href="admin.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        Container chính
+        .container {
+            padding: 20px;
+            background-color: #f5f7fa;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        /* Tiêu đề */
+        .container h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Chức năng tìm kiếm và lọc */
+        .search-filter {
+            display: flex;
+            justify-content: center; /* Căn giữa */
+            margin-bottom: 20px; /* Khoảng cách dưới */
+        }
+
+        .search-filter input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc; /* Viền nhẹ cho ô tìm kiếm */
+            border-radius: 4px; /* Bo góc cho ô tìm kiếm */
+            width: 300px; /* Chiều rộng ô tìm kiếm */
+            margin-right: 10px; /* Khoảng cách bên phải */
+        }
+
+        /* Bảng quản lý khách hàng */
+        #customerTable {
+            width: 100%; /* Chiếm toàn bộ chiều rộng */
+            border-collapse: collapse; /* Gộp viền cho các ô */
+            margin-top: 20px; /* Khoảng cách trên bảng */
+        }
+
+        #customerTable thead {
+            background-color: #007bff; /* Màu nền cho tiêu đề bảng */
+            color: #fff; /* Màu chữ cho tiêu đề bảng */
+        }
+
+        #customerTable th,
+        #customerTable td {
+            padding: 12px; /* Khoảng cách bên trong ô */
+            text-align: left; /* Căn trái cho chữ */
+            border: 1px solid #ccc; /* Viền cho các ô */
+        }
+
+        #customerTable tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        #customerTable tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Nút thao tác */
+        .edit-btn {
+            background-color: #ffc107;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .edit-btn:hover {
+            background-color: #e0a800;
+        }
+
+        /* Form thêm khách hàng */
+        .customer-form {
+            display: none; /* Ẩn form khi không cần thiết */
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+        }
+
+        .customer-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .customer-form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .customer-form input,
+        .customer-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-submit {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .btn-submit button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-submit .save-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-submit .close-button {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-submit .save-button:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-submit .close-button:hover {
+            background-color: #c82333;
+        }
+        .main-content {
+   
+    padding: 2rem;
+}
+    </style>
 </head>
-<style>
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    padding: 20px;
-}
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2 {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Bảng khách hàng */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table th, table td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-table th {
-    background-color: #4CAF50;
-    color: white;
-}
-
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Nút chỉnh sửa và xóa */
-.edit-btn, .delete-btn {
-    padding: 6px 12px;
-    margin: 0 5px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-}
-
-.edit-btn {
-    background-color: #ffa500;
-    color: white;
-}
-
-.delete-btn {
-    background-color: #ff4d4d;
-    color: white;
-}
-
-.edit-btn:hover {
-    background-color: #e69500;
-}
-
-.delete-btn:hover {
-    background-color: #e60000;
-}
-
-/* Form thêm mới khách hàng */
-form {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-form input {
-    padding: 8px;
-    width: 200px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-form button {
-    padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #45a049;
-}
-
-</style>
 <body>
-    <div class="container">
-        <h1>Quản lý khách hàng</h1>
-        
-        <!-- Bảng danh sách khách hàng -->
-        <table id="customerTable">
-            <thead>
-                <tr>
-                    <th>Customer ID</th>
-                    <th>Customer Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dữ liệu mẫu -->
-                <tr>
-                    <td>1</td>
-                    <td>John Doe</td>
-                    <td>john@example.com</td>
-                    <td>0912345678</td>
-                    <td>
-                        <button class="edit-btn">Edit</button>
-                        <!-- <button class="delete-btn">Delete</button> -->
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Jane Smith</td>
-                    <td>jane@example.com</td>
-                    <td>0933333333</td>
-                    <td>
-                        <button class="edit-btn">Edit</button>
-                        <!-- <button class="delete-btn">Delete</button> -->
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">DJI FLYCAM</div>
+        <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+        <div class="header-icons">
+            <div class="notifications">🔔</div>
+            <div class="user-avatar">👤</div>
+        </div>
+    </header>
+    <button class="menu-toggle">☰</button>
+
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+        <nav class="menu">
+            <a href="/thong-ke.html">Trang Chủ</a>
+            <a href="/ql-don-hang.html">Quản Lý Đơn Hàng</a>
+            <a href="/ql-san-pham.html">Quản Lý Sản Phẩm</a>
+            <a href="/ql-khach-hang.html">Quản Lý Khách Hàng</a>
+            <a href="/thong-ke.html">Thống Kê và Báo Cáo</a>
+            <a href="/ql-baiviet.html">Danh sách bài Viết</a>
+        </nav>
+    </aside>
+    <button class="menu-toggle">☰</button>
+
+    <div class="main-content" >
+        <div class="add-customer">
+            <button class="add-button" onclick="toggleCustomerForm()">+ Thêm Khách Hàng</button>
+        </div>
+        <div class="container">
+            <h1>Quản lý khách hàng</h1>
+
+            <!-- Chức năng tìm kiếm và lọc -->
+            <div class="search-filter">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên khách hàng...">
+            </div>
+
+            <!-- Bảng danh sách khách hàng -->
+            <table id="customerTable">
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Customer Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="customerBody">
+                    <!-- Dữ liệu mẫu -->
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>0912345678</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jane Smith</td>
+                        <td>jane@example.com</td>
+                        <td>0933333333</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <!-- Form thêm mới khách hàng -->
-        <h2>Add New Customer</h2>
-        <form id="customerForm">
-            <input type="text" id="customerName" placeholder="Customer Name" required>
-            <input type="email" id="customerEmail" placeholder="Email" required>
-            <input type="tel" id="customerPhone" placeholder="Phone Number" required>
-            <button type="submit">Add Customer</button>
-        </form>
+        <div id="customer-form" class="customer-form">
+            <h2>Thêm Khách Hàng Mới</h2>
+            <form id="addCustomerForm">
+                <label for="customer_name">Tên Khách Hàng</label>
+                <input type="text" id="customer_name" name="customer_name" required>
+
+                <label for="customer_email">Email Khách Hàng</label>
+                <input type="email" id="customer_email" name="customer_email" required>
+
+                <label for="customer_phone">Số Điện Thoại</label>
+                <input type="tel" id="customer_phone" name="customer_phone" required>
+
+                <label for="customer_address">Địa Chỉ</label>
+                <textarea id="customer_address" name="customer_address" rows="2" required></textarea>
+            </form>
+            <div class="btn-submit">
+                <button class="save-button" onclick="addCustomer()">Lưu Khách Hàng</button>
+                <button class="close-button" onclick="toggleCustomerForm()">Đóng</button>
+            </div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        let customers = [
+            { id: 1, name: 'John Doe', email: 'john@example.com', phone: '0912345678' },
+            { id: 2, name: 'Jane Smith', email: 'jane@example.com', phone: '0933333333' }
+        ];
+
+        function toggleCustomerForm() {
+            const form = document.getElementById('customer-form');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+            if (form.style.display === 'block') {
+                clearForm();
+            }
+        }
+
+        function clearForm() {
+            document.getElementById('addCustomerForm').reset();
+        }
+
+        function addCustomer() {
+            const name = document.getElementById('customer_name').value;
+            const email = document.getElementById('customer_email').value;
+            const phone = document.getElementById('customer_phone').value;
+
+            if (name && email && phone) {
+                const newId = customers.length + 1;
+                const newCustomer = { id: newId, name, email, phone };
+                customers.push(newCustomer);
+                renderCustomerTable();
+                toggleCustomerForm();
+            }
+        }
+
+        function renderCustomerTable() {
+            const customerBody = document.getElementById('customerBody');
+            customerBody.innerHTML = '';
+            customers.forEach(customer => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${customer.id}</td>
+                    <td>${customer.name}</td>
+                    <td>${customer.email}</td>
+                    <td>${customer.phone}</td>
+                    <td><button class="edit-btn">Edit</button></td>
+                `;
+                customerBody.appendChild(row);
+            });
+        }
+
+        // Tìm kiếm
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const filteredCustomers = customers.filter(customer => 
+                customer.name.toLowerCase().includes(filter)
+            );
+            const customerBody = document.getElementById('customerBody');
+            customerBody.innerHTML = '';
+            filteredCustomers.forEach(customer => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${customer.id}</td>
+                    <td>${customer.name}</td>
+                    <td>${customer.email}</td>
+                    <td>${customer.phone}</td>
+                    <td><button class="edit-btn">Edit</button></td>
+                `;
+                customerBody.appendChild(row);
+            });
+        });
+
+        renderCustomerTable();
+    </script>
+    <script>
+      // JavaScript để điều khiển mở/đóng sidebar
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+          const sidebar = document.querySelector('.sidebar');
+          sidebar.classList.toggle('show');
+      });
+  </script>
 </body>
+
 </html>
