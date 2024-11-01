@@ -288,11 +288,11 @@ body {
     }
 
     .card-title {
-        font-size: 0.9em; /* Giảm kích thước chữ tiêu đề cho thẻ */
+        font-size: 0.6em; /* Giảm kích thước chữ tiêu đề cho thẻ */
     }
 
     .card-text {
-        font-size: 0.7em; /* Giảm kích thước chữ cho văn bản thẻ */
+        font-size: 0.4em; /* Giảm kích thước chữ cho văn bản thẻ */
     }
 }
 
@@ -664,6 +664,16 @@ body {
     width: calc(25% - 20px); /* 4 thẻ mỗi hàng trên màn hình máy tính */
     transition: transform 0.2s;
 }
+.card-title {
+    font-size: 1.125rem; /* Sử dụng rem để đảm bảo tính nhất quán */
+    font-weight: bold;
+    margin: 0.5em 0; /* Thay pixel bằng em cho khoảng cách linh hoạt */
+}
+
+.card-text {
+    padding: 0 1em 1em; /* Sử dụng em cho padding linh hoạt */
+    color: #555;
+}
 
 .card:hover {
     transform: scale(1.05);
@@ -690,7 +700,7 @@ body {
     }
 
     .card-text {
-        font-size: 0.6em; /* Giảm kích thước chữ cho văn bản thẻ */
+        font-size: 0.4em; /* Giảm kích thước chữ cho văn bản thẻ */
     }
 }
 
@@ -699,11 +709,11 @@ body {
         width: calc(45% - 10px); /* 1 thẻ mỗi hàng trên màn hình điện thoại nhỏ */
     }
     .card-title {
-        font-size: 0.8em; /* Giảm kích thước chữ tiêu đề cho thẻ */
+        font-size: 0.6em; /* Giảm kích thước chữ tiêu đề cho thẻ */
     }
 
     .card-text {
-        font-size: 0.6em; /* Giảm kích thước chữ cho văn bản thẻ */
+        font-size: 0.4em; /* Giảm kích thước chữ cho văn bản thẻ */
     }
 }
 .about-section {

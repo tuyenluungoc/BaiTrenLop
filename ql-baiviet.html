@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tất cả bài viết</title>
+    <link rel="stylesheet" href="path/to/your/styles.css"> <!-- Thay đổi đường dẫn đến CSS của bạn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"> <!-- Để sử dụng biểu tượng Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> <!-- Thêm CSS cho DataTables -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- Content Header (Page header) -->
+    <header class="header">
+        <div class="logo">DJI FLYCAM</div>
+        <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+        <div class="header-icons">
+            <div class="notifications">🔔</div>
+            <div class="user-avatar">👤</div> 
+        </div>
+    </header>
+    <button class="menu-toggle">☰</button>
+
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+        <nav class="menu">
+            <a href="/thong-ke.html">Trang Chủ</a>
+            <a href="/ql-don-hang.html">Quản Lý Đơn Hàng</a>
+            <a href="/ql-san-pham.html">Quản Lý Sản Phẩm</a>
+            <a href="/ql-khach-hang.html">Quản Lý Khách Hàng</a>
+            <a href="/thong-ke.html">Thống Kê và Báo Cáo</a>
+            <a href="/ql-baiviet.html">Danh sách bài Viết</a>
+        </nav>
+    </aside>
+
+    <!-- Main content -->
+    <section class="main-content">
+        <div class="container-fluid">
+            <div class="row py-2">
+                <div class="col-12">
+                    <a href="/admin/blogs/create" type="button" class="btn btn-primary">
+                        <i class="fa fa-plus"></i> Viết bài
+                    </a>
+                    <a href="/admin/blogs" type="button" class="btn btn-info">
+                        <i class="fa fa-redo"></i> Refresh
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table id="table-blog" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Tiêu đề</th>
+                                    <th>Tác giả</th>
+                                    <th>Trạng thái</th>
+                                    <th>Ngày tạo</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="/detail.html">Top 11 phim có doanh thu cao nhất mọi thời đại</a>
+                                    </td>
+                                    <td>
+                                        <a href="detail.html">Trần Cường</a>
+                                    </td>
+                                    <td>Công khai</td>
+                                    <td>09/01/2024</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/admin/blogs/2/detail">Phim hoạt hình hay nhất 2023</a>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/users/2/detail">Nguyễn Văn A</a>
+                                    </td>
+                                    <td>Công khai</td>
+                                    <td>08/01/2024</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/admin/blogs/3/detail">Những bộ phim kinh dị đỉnh cao</a>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/users/3/detail">Trần Thị B</a>
+                                    </td>
+                                    <td>Nháp</td>
+                                    <td>07/01/2024</td>
+                                </tr>
+
+                                <!-- Thêm các bài viết khác ở đây -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#table-blog').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+<script>
+    // JavaScript để điều khiển mở/đóng sidebar
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

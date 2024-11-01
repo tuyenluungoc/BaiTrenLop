@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm - Fly Cam</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<style>
+    /* Tổng thể */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+
+/* Main Content */
+.main-content {
+    
+    padding: 2rem;
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+/* Add Product Button */
+.add-product {
+    margin-bottom: 1.5rem;
+    text-align: right;
+}
+
+.add-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #1ABC9C;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    background-color: #16A085;
+}
+
+/* Product Table */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.product-table th, .product-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-table th {
+    background-color: #f4f4f4;
+}
+
+.product-img {
+    width: 100px;
+    height: auto;
+    border-radius: 0.3rem;
+}
+
+/* Buttons */
+.edit-button, .delete-button {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.edit-button {
+    background-color: #3498DB;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #2980B9;
+}
+
+.delete-button {
+    background-color: #E74C3C;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #C0392B;
+}
+
+</style>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">DJI FLYCAM</div>
+        <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+        <div class="header-icons">
+            <div class="notifications">🔔</div>
+            <div class="user-avatar">👤</div> 
+        </div>
+    </header>
+    <button class="menu-toggle">☰</button>
+
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+        <nav class="menu">
+            <a href="/thong-ke.html">Trang Chủ</a>
+            <a href="/ql-don-hang.html">Quản Lý Đơn Hàng</a>
+            <a href="/ql-san-pham.html">Quản Lý Sản Phẩm</a>
+            <a href="/ql-khach-hang.html">Quản Lý Khách Hàng</a>
+            <a href="/thong-ke.html">Thống Kê và Báo Cáo</a>
+            <a href="/ql-baiviet.html">Danh sách bài Viết</a>
+            
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <br>
+        <br>
+        <h2>Quản Lý Sản Phẩm</h2>
+        
+        <!-- Button to Add New Product -->
+        <div class="add-product">
+            <a href="/themsanpham.html"><button class="add-button">+ Thêm Sản Phẩm Mới</button></a>
+        </div>
+        
+        <!-- Product Table -->
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Hình Ảnh</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Giá</th>
+                    <th>Số Lượng Tồn Kho</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Product Row -->
+                <tr>
+                    <td><img src="flycam.jpg" alt="Fly Cam" class="product-img"></td>
+                    <td>Fly Cam Pro</td>
+                    <td>15,000,000 VND</td>
+                    <td>10</td>
+                    <td>
+                        <button class="edit-button">Chỉnh Sửa</button>
+                        <button class="delete-button">Xóa</button>
+                    </td>
+                </tr>
+                <!-- Add more product rows as needed -->
+            </tbody>
+        </table>
+    </main>
+    <script>
+        // JavaScript để điều khiển mở/đóng sidebar
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
